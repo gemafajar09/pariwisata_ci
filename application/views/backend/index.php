@@ -1,3 +1,6 @@
+<?php
+    $this->template->cek_login();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +13,7 @@
 </head>
 
 <body>
+	<?= $alert ?>
 	<?= $script ?>
 	<?= $header ?>
 	<?= $sidebar ?>

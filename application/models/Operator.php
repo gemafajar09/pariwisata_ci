@@ -1,5 +1,6 @@
 <?php
 class Operator extends CI_Model {
+    
     public function rules()
 	{
         return [
@@ -22,12 +23,26 @@ class Operator extends CI_Model {
 				'field' => 'alamat', 
 				'label' => 'Alamat', 
 				'rules' => 'required'
-            ],
-			[
-				'field' => 'foto', 
-				'label' => 'Foto', 
-				'rules' => 'required'
-            ],
+            ]
 		];
+    }
+
+    public function getData()
+    {
+        return $this->db->get('tb_operator')->result();
+    }
+
+    public function simpan($data)
+    {
+        return $this->db->insert('tb_operator',$data);
+    }
+
+    public function update($data,$id)
+    {
+        return $this->db->where(['id_operator' => $id])->update('tb_operator',$data);
+    }
+
+    public function delete($id){
+        return $this->db->where(['id_operator' => $id])->delete('tb_operator');
     }
 }

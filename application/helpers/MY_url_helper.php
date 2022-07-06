@@ -1,4 +1,18 @@
 <?php
+
+function getUserLevel($level,$id_user) {
+  if($level == 1)
+  {
+    $data = array(
+      'nama' => 'ADMINISTRATOR',
+      'foto' => 'assets/src/images/user.png'
+    );
+    
+  }
+  return $data;
+}
+
+
 function angkaNolDepan($angka)
 {
   return $angka > 9 ? $angka : "0" . $angka;
@@ -438,17 +452,6 @@ function fileMultiUpload($files, $index, $lokasi)
   return $nama_file;
 }
 
-/*
-   selisihWaktu($FromDate, $ToDate)
-   $fromdate = tanggal awal
-   $todate = tanggal akhir
-   $hasil = selisihWaktu('1995-10-10', '2019-10-10');
-   echo $hasil['jam'];
-   echo $hasil['minggu'];
-   echo $hasil['hari'];
-   echo $hasil['bulan'];
-   echo $hasil['tahun'];
-  */
 function selisihWaktu($FromDate, $ToDate)
 {
   $FromDate = new DateTime($FromDate);
@@ -463,8 +466,7 @@ function selisihWaktu($FromDate, $ToDate)
 
   return $Difference;
 }
-// $inputSeconds = selisih 2 waktu dalam detik
-// Output berupa array
+
 function selisihWaktuSekarang($inputSeconds)
 {
 
@@ -509,15 +511,4 @@ function selisihWaktuSekarang($inputSeconds)
 
   return implode(", ", $hasil);
 
-  // Contoh pemakaian
-  // waktu awal
-  //~ $t1 = strtotime("2001-11-22 11:21:00");
-
-  //~ // waktu akhir (waktu sekarang)
-  //~ $t2 = strtotime(date("Y-m-d H:i:s"));
-
-  //~ // selisih waktu dalam detik
-  //~ $selisih = $t2 - $t1;
-
-  //~ var_dump($selisih);
 }

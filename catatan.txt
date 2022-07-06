@@ -1,0 +1,23 @@
+migration database menggunakan phix
+composer require robmorgan/phinx --dev
+
+buat sebuah folder dengan nama db
+didalam folder db buat dolder migration dan seeds
+
+selanjutnya lakukan perintah initsialisai phinx
+php vendor/bin/phinx init
+
+selnjutnya perintah untuk membuat sebuah migrasi database
+vendor/bin/phinx create "Nama file migrasi sesuai tabel yang ingin dibuat"
+
+perintah untuk migrasi ke database
+phinx migrate -e development
+
+perintah untuk membatalkan migrasi ke database
+vendor/bin/phinx rollback -e development
+
+perintah untuk membuat seeder
+vendor/bin/phinx seed:create "Nama Seeder"
+
+perintah untuk menjalankan seeder
+vendor/bin/phinx seed:run
