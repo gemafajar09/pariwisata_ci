@@ -27,7 +27,11 @@ class B_login extends CI_Controller {
 
             if($user['username'] == $username){
                 if(password_verify($password,$user['password_hash'])){
-                    $this->session->set_userdata($user['id_user']);
+                    $data = [
+                        'id_user' => $user['id_user'],
+                        'jabatan' => $user['jabatan'],
+                    ];
+                    $this->session->set_userdata($data);
                     redirect('dashboard');
                 }else{
                     $this->session->set_flashdata('pesan','Password Salah.');
