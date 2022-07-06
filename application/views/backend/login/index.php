@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/fontawesome.min.css">
 </head>
 <body>
+    <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/fontawesome.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <?php
         if(isset($_SESSION['pesan']))
         {
             echo "<script>
-                alert('".$_SESSION['pesan']."')
+                swal('".$_SESSION['type']."', '".$_SESSION['pesan']."', '".$_SESSION['type']."');
             </script>";
         }
     ?>
@@ -33,15 +37,6 @@
                                 <label for="">Password</label>
                                 <input type="password" class="form-control" placeholder="********" name="password" id="password" required autocomplete="off" >
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="">Jabatan</label>
-                                <select name="jabatan" id="jabatan" class="form-control">
-                                    <option value="">-PILIH JABATAN-</option>
-                                    <option value="1">Administrator</option>
-                                    <option value="2">Operator Dinas</option>
-                                    <option value="3">Pengelola Wisata</option>
-                                </select>
-                            </div> -->
                             <div align="right">
                                 <button style="width:40%" type="submit" class="btn btn-primary">Login</button>
                             </div>
@@ -52,8 +47,5 @@
         </div>
     </div>
 
-    <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/fontawesome.min.js"></script>
 </body>
 </html>

@@ -87,26 +87,26 @@
 			<div class="sidebar-menu">
 				<ul id="accordion-menu">
 					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle no-arrow">
+						<a href="<?= base_url('dashboard') ?>" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
 						</a>
 					</li>
 					<!-- Administrator -->
-					<?php if($_SESSION['jabatan'] == 1): ?>
+					<?php if($_SESSION['level'] == 1): ?>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('user') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user"></span><span class="mtext">Akun Pengguna</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('operator') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user"></span><span class="mtext">Operator Dinas Wisata</span>
 							</a>
 						</li>
 					<?php endif ?>
 
 					<!-- operator dinas -->
-					<?php if($_SESSION['jabatan'] == 2): ?>
+					<?php if($_SESSION['level'] == 2): ?>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-image"></span><span class="mtext">Galery</span>
@@ -140,7 +140,7 @@
 					<?php endif ?>
 
 					<!-- petugas wisata -->
-					<?php if($_SESSION['jabatan'] == 3): ?>
+					<?php if($_SESSION['level'] == 3): ?>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Daftar Tiket Wisata</span>
@@ -153,22 +153,8 @@
 						</li>
 					<?php endif ?>
 
-						<!-- calon petugas -->
-					<?php if($_SESSION['jabatan'] == 4): ?>
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
-								<span class="micon dw dw-ticket"></span><span class="mtext">Seleksi Calon Petugas</span>
-							</a>
-						</li>
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
-								<span class="micon dw dw-ticket"></span><span class="mtext">Daftar Calon Petugas</span>
-							</a>
-						</li>
-					<?php endif ?>
-
 					<!-- pengelola wisata -->
-					<?php if($_SESSION['jabatan'] == 5): ?>
+					<?php if($_SESSION['level'] == 4): ?>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Pendapatan Wisata</span>
@@ -195,6 +181,22 @@
 							</a>
 						</li>
 					<?php endif ?>
+
+					<!-- calon petugas -->
+					<?php if($_SESSION['level'] == 5): ?>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-ticket"></span><span class="mtext">Seleksi Calon Petugas</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-ticket"></span><span class="mtext">Daftar Calon Petugas</span>
+							</a>
+						</li>
+					<?php endif ?>
+
+					
 				</ul>
 			</div>
 		</div>
