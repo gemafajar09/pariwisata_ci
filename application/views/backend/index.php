@@ -10,14 +10,13 @@
 </head>
 
 <body>
+	<?= $script ?>
 	<?= $header ?>
 	<?= $sidebar ?>
 
 	<div class="main-container">
 		<?= $content ?>
 	</div>
-
-	<?= $script ?>
 </body>
 
 </html>

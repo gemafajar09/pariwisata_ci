@@ -11,6 +11,9 @@ $route['logout_admin']['get'] = 'B_login/logout';
 
 $route['dashboard']['get'] = 'B_home/index';
 
+// operator
+$route['operator']['get'] = 'B_operator/index';
+
 
 // frontend
 $route['home']['get'] = 'F_home/index';
