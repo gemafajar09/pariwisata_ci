@@ -12,7 +12,21 @@
 	</div> -->
 
 	<?php
-		$dataUser = getUserLevel($_SESSION['jabatan'],$_SESSION['id_user']);
+		$level = $_SESSION['level'];
+		$id_user = $_SESSION['id_user'];
+		if($level == 1)
+		{
+			$dataUser = array(
+			'nama' => 'ADMINISTRATOR',
+			'foto' => 'assets/src/images/user.png'
+			);
+		}elseif($level == 2){
+			$user = $this->db->query("SELECT * FROM tb_operator WHERE id_user = '$id_user'")->row_array();
+			$dataUser = array(
+			'nama' => $user['nama'],
+			'foto' => $user['foto']
+			);
+		}
 	?>
 
 	<div class="header">

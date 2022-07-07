@@ -42,7 +42,7 @@
 					<?php foreach($operator as $i => $isi): ?>
 					<tr>
 						<td><?= $i+1 ?></td>
-						<td><img src="<?= base_url('assets/upload/operator/'.$isi->foto) ?>" width="130px" alt="">
+						<td><img src="<?= base_url($isi->foto) ?>" width="130px" alt="">
 						</td>
 						<td><?= $isi->nama ?></td>
 						<td><?= $isi->nik ?></td>
@@ -179,7 +179,7 @@
 		$('#nik').val(nik)
 		$('#jabatan').val(jabatan)
 		$('#alamat').val(alamat)
-		document.getElementById('showGambar').innerHTML = '<img src="' + base + 'assets/upload/operator/' + foto +
+		document.getElementById('showGambar').innerHTML = '<img src="' + base + '' + foto +
 			'" width="120px"/>';
 
 		$('#judul').html("Edit Data")

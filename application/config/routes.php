@@ -20,6 +20,9 @@ $route['operator-delete/(:num)']['get'] = 'B_operator/delete/$1';
 
 // user
 $route['user']['get'] = 'B_user/index';
+$route['user-up/(:num)']['get'] = 'B_user/unlock/$1';
+$route['user-pass/(:num)']['post'] = 'B_user/update/$1';
+$route['user-del/(:num)']['get'] = 'B_user/delete/$1';
 
 // frontend
 $route['home']['get'] = 'F_home/index';
