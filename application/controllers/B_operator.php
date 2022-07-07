@@ -73,9 +73,9 @@ class B_operator extends CI_Controller {
                     // ambil nama file lama
                     $path = "assets/upload/operator/".$_POST['foto_lama'];
                     // cek file lama di dalam folder yang di deklarasikan
-                    if (file_exists($Path)){
+                    if (file_exists($path)){
                         // jika foto ada maka hapus file pada folder
-                        unlink($Path);
+                        unlink($path);
                     }
 
                     // simpan file baru ke folder yang ditentukan

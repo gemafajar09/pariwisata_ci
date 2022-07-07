@@ -18,7 +18,7 @@ class User extends AbstractSeed
         $data = array(
             array(
                 'username' => 'admin',
-                'password' => password_hash('admin123', PASSWORD_DEFAULT),
+                'password_hash' => password_hash('admin123', PASSWORD_DEFAULT),
                 'status' => 1,
                 'level' => 1
             ),

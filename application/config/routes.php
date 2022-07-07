@@ -20,6 +20,12 @@ $route['operator-delete/(:num)']['get'] = 'B_operator/delete/$1';
 
 // user
 $route['user']['get'] = 'B_user/index';
+$route['user-add/(:num)']['post'] = 'B_user/simpan/$1';
+
+// Berita
+$route['berita']['get'] = 'B_berita/index';
+$route['tambah-berita']['get'] = 'B_berita/tambahBerita';
+$route['berita-add']['post'] = 'B_berita/simpan';
 
 // frontend
 $route['home']['get'] = 'F_home/index';

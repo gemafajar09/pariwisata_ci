@@ -12,7 +12,7 @@
 	</div> -->
 
 	<?php
-		$dataUser = getUserLevel($_SESSION['jabatan'],$_SESSION['id_user']);
+		$dataUser = getUserLevel($_SESSION['level'],$_SESSION['id_user']);
 	?>
 
 	<div class="header">
