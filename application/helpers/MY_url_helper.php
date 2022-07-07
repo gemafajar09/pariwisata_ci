@@ -1,17 +1,16 @@
 <?php
 
 function getUserLevel($level,$id_user) {
-  if($level == 1)
-  {
-    $data = array(
-      'nama' => 'ADMINISTRATOR',
-      'foto' => 'assets/src/images/user.png'
-    );
-    
-  }
-  return $data;
+    global $con;
+    if($level == 1)
+    {
+        $data = array(
+        'nama' => 'ADMINISTRATOR',
+        'foto' => 'assets/src/images/user.png'
+        );
+    }
+    return $data;
 }
-
 
 function angkaNolDepan($angka)
 {
