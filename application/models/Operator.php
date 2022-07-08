@@ -29,7 +29,7 @@ class Operator extends CI_Model {
 
     public function getData()
     {
-        return $this->db->get('tb_operator')->result();
+        return $this->db->query("SELECT * FROM tb_operator a JOIN tb_jabatan b ON a.jabatan = b.id_jabatan")->result();
     }
 
     public function simpan($data)
