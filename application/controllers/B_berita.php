@@ -12,16 +12,18 @@ class B_berita extends CI_Controller
     public function index()
     {
         $data['berita'] = $this->Berita->getData();
-        $this->template->b_template('backend/operator/berita', $data);
+        $this->template->b_template('backend/berita/index', $data);
     }
 
     public  function tambahBerita()
     {
-        $this->template->b_template('backend/operator/tambah-berita');
+        $this->template->b_template('backend/berita/tambah-berita');
     }
 
-    public function simpan()
+    public function simpan($id = null)
     {
+        date_default_timezone_set("Asia/Bangkok");
+        $date = date('Y-m-d H:i:s');
 
         $rules = $this->Berita->rules();
         $this->form_validation->set_rules($rules);
@@ -38,6 +40,7 @@ class B_berita extends CI_Controller
                     'isi_berita' => $_POST['isi_berita'],
                     'penulis' => $_POST['penulis'],
                     'foto' => $filename,
+                    'tgl_publish' => $date
                 );
 
                 $simpan = $this->Berita->simpan($data);
@@ -50,7 +53,7 @@ class B_berita extends CI_Controller
                         'judul' => $_POST['judul'],
                         'isi_berita' => $_POST['isi_berita'],
                         'penulis' => $_POST['penulis'],
-                        'alamat' => $_POST['alamat'],
+                        'tgl_publish' => $date
                     );
 
                 } else {
@@ -60,17 +63,23 @@ class B_berita extends CI_Controller
                         unlink($path);
                     }
 
-                    $filename = fileUpload($_FILES['foto'], 'assets/upload/operator/');
+                    $filename = fileUpload($_FILES['foto'], 'assets/upload/berita/');
                     $data = array(
                         'judul' => $_POST['judul'],
                         'isi_berita' => $_POST['isi_berita'],
                         'foto' => $filename,
-                        'penulis' => $_POST['penulis']
+                        'penulis' => $_POST['penulis'],
+                        'tgl_publish' => $date
                     );
                 }
-                $edit = $this->Operator->update($data, $_POST['id']);
+                $edit = $this->Berita->update($data, $_POST['id']);
                 echo json_encode(['pesan' => $edit]);
             }
         }
+    }
+
+    public function delete($id){
+        $hapus = $this->Berita->delete($id);
+        echo json_encode(['pesan' => $hapus]);
     }
 }

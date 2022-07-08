@@ -77,7 +77,7 @@
         form_data.append("isi_berita", isi);
         form_data.append("foto", foto);
         form_data.append("penulis", penulis);
-        form_data.append("tgl_publish", date);
+        // form_data.append("tgl_publish", date);
 
         // if (id != "null") {
         //     form_data.append("id", id);
