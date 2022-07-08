@@ -64,20 +64,20 @@
         var form_data = new FormData();
         urls = "berita-add";
 
-        var reload = 'berita';
 
-        
         var judul = $('#judul').val();
         var isi = $('#isi_berita').val();
         var penulis = $('#penulis').val();
         var foto = $("#foto").prop("files")[0];
-        var dt = new Date();
 
-		form_data.append("judul", judul);
-		form_data.append("isi_berita", isi);
+        // var current_date = moment().format('YYYY-MM-DDTHH:MM:ss');
+        var date = new Date();
+
+        form_data.append("judul", judul);
+        form_data.append("isi_berita", isi);
         form_data.append("foto", foto);
-		form_data.append("penulis", penulis);
-        form_data.append("tgl_publish", dt);
+        form_data.append("penulis", penulis);
+        form_data.append("tgl_publish", date);
 
         // if (id != "null") {
         //     form_data.append("id", id);
@@ -85,19 +85,19 @@
         // }
 
         $.ajax({
-			url: urls,
-			dataType: 'JSON',
-			cache: false,
-			contentType: false,
-			processData: false,
-			data: form_data,
-			type: 'post',
-			success: function (res) {
-				if (res.pesan) {
+            url: urls,
+            dataType: 'JSON',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(res) {
+                if (res.pesan) {
                     window.location = 'berita';
-				}
-			}
-		});
+                }
+            }
+        });
     }
 
 

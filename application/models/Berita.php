@@ -17,12 +17,12 @@ class Berita extends CI_Model
             ],
             [
                 'field' => 'penulis',
-                'label' => 'Penulis',
+                'label' => 'penulis',
                 'rules' => 'required'
             ],
             [
                 'field' => 'tgl_publish',
-                'label' => 'Tgl_Publish',
+                'label' => 'tgl_publish',
                 'rules' => 'required'
             ]
         ];
@@ -40,11 +40,11 @@ class Berita extends CI_Model
 
     public function update($data, $id)
     {
-        return $this->db->where(['id_operator' => $id])->update('tb_operator', $data);
+        return $this->db->where(['id_berita' => $id])->update('tb_berita', $data);
     }
 
     public function delete($id)
     {
-        return $this->db->where(['id_operator' => $id])->delete('tb_operator');
+        return $this->db->where(['id_berita' => $id])->delete('tb_berita');
     }
 }
