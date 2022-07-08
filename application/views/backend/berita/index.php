@@ -49,7 +49,7 @@
                             <td><?= $isi->penulis ?></td>
                             <td><?= $isi->tgl_publish ?></td>
                             <td>
-                                <button onclick="editData('<?= $isi->id_berita ?>','<?= $isi->judul ?>','<?= $isi->isi_berita ?>','<?= $isi->penulis ?>','<?= $isi->foto ?>','<?= $isi->tgl_publish ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
+                                <button onclick="editData('<?= $isi->id_berita ?>','<?= $isi->judul ?>','<?= $isi->isi_berita ?>','<?= $isi->foto ?>','<?= $isi->penulis ?>','<?= $isi->tgl_publish ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
                                 <button onclick="hapusData('<?= $isi->id_berita ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
@@ -73,7 +73,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Judul</label>
-                        <input type="text" class="form-control" placeholder="Judul" id="judul" name="judul" required>
+                        <input type="text" class="form-control" placeholder="Judul" id="judul_berita" name="judul_berita" required>
                     </div>
                     <div class="form-group">
                         <label for="">Isi Berita</label>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="simpandata()" class="btn btn-primary">Save changes</button>
+                    <button type="button" onclick="simpandata()" class="btn btn-success">Simpan Perubahan</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -105,11 +105,47 @@
 <script>
     var base = '<?= base_url() ?>'
 
-    function editData(idx, judul, isi, penulis) {
+    function simpandata() {
+        var form_data = new FormData();
+        urls = "berita-add";
+
+        var judul_berita = $('#judul_berita').val();
+        var isi_berita = $('#isi_berita').val();
+        var penulis = $('#penulis').val();
+        var foto = $("#foto").prop("files")[0];
+
+        form_data.append("foto", foto);
+        form_data.append("judul", judul_berita);
+        form_data.append("isi_berita", isi_berita);
+        form_data.append("penulis", penulis);
+
+        if (id != null) {
+            form_data.append("id", id);
+            form_data.append("foto_lama", foto_lama);
+            urls = "berita-add/" + id;
+        }
+
+        $.ajax({
+            url: urls,
+            dataType: 'JSON',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(res) {
+                if (res.pesan) {
+                    window.location.reload();
+                }
+            }
+        });
+    }
+
+    function editData(idx, judul, isi_berita, foto, penulis, tgl_publish) {
         foto_lama = foto
         id = idx
-        $('#judul').val(judul)
-        $('#isi_berita').val(isi)
+        $('#judul_berita').val(judul)
+        $('#isi_berita').val(isi_berita)
         document.getElementById('showGambar').innerHTML = '<img src="' + base + 'assets/upload/berita/' + foto +
             '" width="120px"/>';
         $('#penulis').val(penulis)
@@ -144,5 +180,31 @@
                 }
             }
         }
+    }
+
+    function hapusData(id) {
+        swal({
+                title: "Yakin Ingin Menghapus Data?",
+                text: "Data Yang Telah Terhapus Tidak Dapat kembali lagi.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: 'berita-del/' + id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(res) {
+                            if (res.pesan) {
+                                window.location.reload();
+                            }
+                        }
+                    })
+                } else {
+                    swal("Hapus Data Dibatalkan!");
+                }
+            });
     }
 </script>

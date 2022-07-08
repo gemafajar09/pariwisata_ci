@@ -20,11 +20,6 @@ class Berita extends CI_Model
                 'label' => 'penulis',
                 'rules' => 'required'
             ],
-            [
-                'field' => 'tgl_publish',
-                'label' => 'tgl_publish',
-                'rules' => 'required'
-            ]
         ];
     }
 

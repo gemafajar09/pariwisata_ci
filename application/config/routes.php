@@ -28,6 +28,7 @@ $route['berita']['get'] = 'B_berita/index';
 $route['tambah-berita']['get'] = 'B_berita/tambahBerita';
 $route['berita-add']['post'] = 'B_berita/simpan';
 $route['berita-add/(:num)']['post'] = 'B_berita/simpan/$1';
+$route['berita-del/(:num)']['get'] = 'B_berita/delete/$1';
 
 $route['user-up/(:num)']['get'] = 'B_user/unlock/$1';
 $route['user-pass/(:num)']['post'] = 'B_user/update/$1';
