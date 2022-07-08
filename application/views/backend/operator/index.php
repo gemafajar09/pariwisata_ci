@@ -2,7 +2,6 @@
 	.form-control {
 		border-radius: 15px;
 	}
-
 </style>
 
 <div class="pd-ltr-20 xs-pd-20-10">

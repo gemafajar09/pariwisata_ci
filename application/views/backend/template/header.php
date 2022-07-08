@@ -12,6 +12,7 @@
 	</div> -->
 
 	<?php
+
 		$level = $_SESSION['level'];
 		$id_user = $_SESSION['id_user'];
 		if($level == 1)
