@@ -6,11 +6,13 @@ class B_operator extends CI_Controller {
         // panggil model pada folder models dimana data pada model berfunsi untuk melakukan CRUD
         $this->load->model('Operator');
         $this->load->model('User');
+        $this->load->model('Jabatan');
     }
 
     public function index() {
         // ambil data dari database melali model
         $data['operator'] = $this->Operator->getData();
+        $data['jabatan'] = $this->Jabatan->getData();
         // $this->template adalah class tang terdapat pada libraries
         // sedangkan b_template adalah funcgsi untuk mengirim halaman content
         $this->template->b_template('backend/operator/index',$data);
@@ -41,8 +43,14 @@ class B_operator extends CI_Controller {
                 // kirim data kedalam model user
                 $id_user = $this->User->simpan($dataUser);
 
-                // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder helper
-                $filename = fileUpload($_FILES['foto'],'assets/upload/operator/');
+                if(!isset($_FILES['foto']['name']))
+                {
+                    $filename = 'assets/src/images/user.png';
+                }else{
+                    // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder helper
+                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/operator/');
+                    $filename = 'assets/upload/operator/'.$nameFoto;
+                }
                 // tahapan dibawah berfungsi untuk menyimpan data kedalam bentuk array sebelum di kirim ke model
                 $data = array(
                     'nama' => $_POST['nama'],
@@ -60,7 +68,7 @@ class B_operator extends CI_Controller {
             // jika id user ada maka update data
             }else{
                 // cek jika foto ada atau tidak ada
-                if($_POST['foto'] = 'undefined')
+                if(!isset($_FILES['foto']['name']))
                 {
                     $data = array(
                         'nama' => $_POST['nama'],
@@ -71,7 +79,7 @@ class B_operator extends CI_Controller {
                 // jika foto ada maka simpan foto baru
                 }else{
                     // ambil nama file lama
-                    $path = "assets/upload/operator/".$_POST['foto_lama'];
+                    $path = $_POST['foto_lama'];
                     // cek file lama di dalam folder yang di deklarasikan
                     if (file_exists($path)){
                         // jika foto ada maka hapus file pada folder
@@ -79,7 +87,8 @@ class B_operator extends CI_Controller {
                     }
 
                     // simpan file baru ke folder yang ditentukan
-                    $filename = fileUpload($_FILES['foto'],'assets/upload/operator/');
+                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/operator/');
+                    $filename = 'assets/upload/operator/'.$nameFoto;
                     $data = array(
                         'nama' => $_POST['nama'],
                         'nik' => $_POST['nik'],

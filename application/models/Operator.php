@@ -29,7 +29,7 @@ class Operator extends CI_Model {
 
     public function getData()
     {
-        return $this->db->get('tb_operator')->result();
+        return $this->db->query("SELECT * FROM tb_operator a JOIN tb_jabatan b ON a.jabatan = b.id_jabatan")->result();
     }
 
     public function simpan($data)
@@ -43,6 +43,11 @@ class Operator extends CI_Model {
     }
 
     public function delete($id){
-        return $this->db->where(['id_operator' => $id])->delete('tb_operator');
+        $user = $this->db->get_Where('tb_operator',['id_operator' => $id])->row_array();
+        if (file_exists($user['foto'])){
+            unlink($user['foto']);
+        }
+        $this->db->where('id_user',$user['id_user'])->delete('tb_operator');
+        return $this->db->where('id_user',$user['id_user'])->delete('tb_user');
     }
 }

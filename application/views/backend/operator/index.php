@@ -41,7 +41,7 @@
 					<?php foreach($operator as $i => $isi): ?>
 					<tr>
 						<td><?= $i+1 ?></td>
-						<td><img src="<?= base_url('assets/upload/operator/'.$isi->foto) ?>" width="130px" alt="">
+						<td><img src="<?= base_url($isi->foto) ?>" width="130px" alt="">
 						</td>
 						<td><?= $isi->nama ?></td>
 						<td><?= $isi->nik ?></td>
@@ -49,7 +49,7 @@
 						<td><?= $isi->alamat ?></td>
 						<td>
 							<button
-								onclick="editData('<?= $isi->id_operator ?>','<?= $isi->nama ?>','<?= $isi->nik ?>','<?= $isi->jabatan ?>','<?= $isi->foto ?>','<?= $isi->alamat ?>')"
+								onclick="editData('<?= $isi->id_operator ?>','<?= $isi->nama ?>','<?= $isi->nik ?>','<?= $isi->id_jabatan ?>','<?= $isi->foto ?>','<?= $isi->alamat ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
 							<button onclick="hapusData('<?= $isi->id_operator ?>')"
@@ -98,7 +98,9 @@
 								<label for="">Jabatan</label>
 								<select name="jabatan" id="jabatan" class="form-control" required>
 									<option value="">-PILIH-</option>
-									<option value="Parkir">Parkir</option>
+									<?php foreach($jabatan as $key => $value): ?>
+										<option value="<?=$value->id_jabatan ?>"><?=$value->jabatan ?></option>
+									<?php endforeach;?>
 								</select>
 							</div>
 						</div>
@@ -178,7 +180,7 @@
 		$('#nik').val(nik)
 		$('#jabatan').val(jabatan)
 		$('#alamat').val(alamat)
-		document.getElementById('showGambar').innerHTML = '<img src="' + base + 'assets/upload/operator/' + foto +
+		document.getElementById('showGambar').innerHTML = '<img src="' + base + '' + foto +
 			'" width="120px"/>';
 
 		$('#judul').html("Edit Data")
