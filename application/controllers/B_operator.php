@@ -6,11 +6,13 @@ class B_operator extends CI_Controller {
         // panggil model pada folder models dimana data pada model berfunsi untuk melakukan CRUD
         $this->load->model('Operator');
         $this->load->model('User');
+        $this->load->model('Jabatan');
     }
 
     public function index() {
         // ambil data dari database melali model
         $data['operator'] = $this->Operator->getData();
+        $data['jabatan'] = $this->Jabatan->getData();
         // $this->template adalah class tang terdapat pada libraries
         // sedangkan b_template adalah funcgsi untuk mengirim halaman content
         $this->template->b_template('backend/operator/index',$data);
@@ -79,9 +81,9 @@ class B_operator extends CI_Controller {
                     // ambil nama file lama
                     $path = $_POST['foto_lama'];
                     // cek file lama di dalam folder yang di deklarasikan
-                    if (file_exists($Path)){
+                    if (file_exists($path)){
                         // jika foto ada maka hapus file pada folder
-                        unlink($Path);
+                        unlink($path);
                     }
 
                     // simpan file baru ke folder yang ditentukan

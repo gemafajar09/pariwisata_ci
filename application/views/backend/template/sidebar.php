@@ -103,6 +103,11 @@
 								<span class="micon dw dw-user"></span><span class="mtext">Operator Dinas Wisata</span>
 							</a>
 						</li>
+						<li class="dropdown">
+							<a href="<?= base_url('jabatan') ?>" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-file"></span><span class="mtext">Jabatan</span>
+							</a>
+						</li>
 					<?php endif ?>
 
 					<!-- operator dinas -->

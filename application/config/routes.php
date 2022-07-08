@@ -24,5 +24,11 @@ $route['user-up/(:num)']['get'] = 'B_user/unlock/$1';
 $route['user-pass/(:num)']['post'] = 'B_user/update/$1';
 $route['user-del/(:num)']['get'] = 'B_user/delete/$1';
 
+// jabatan
+$route['jabatan']['get'] = 'B_jabatan/index';
+$route['jabatan-add']['post'] = 'B_jabatan/simpan';
+$route['jabatan-add/(:num)']['post'] = 'B_jabatan/simpan/$1';
+$route['jabatan-del/(:num)']['get'] = 'B_jabatan/delete/$1';
+
 // frontend
 $route['home']['get'] = 'F_home/index';

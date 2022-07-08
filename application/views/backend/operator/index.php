@@ -50,7 +50,7 @@
 						<td><?= $isi->alamat ?></td>
 						<td>
 							<button
-								onclick="editData('<?= $isi->id_operator ?>','<?= $isi->nama ?>','<?= $isi->nik ?>','<?= $isi->jabatan ?>','<?= $isi->foto ?>','<?= $isi->alamat ?>')"
+								onclick="editData('<?= $isi->id_operator ?>','<?= $isi->nama ?>','<?= $isi->nik ?>','<?= $isi->id_jabatan ?>','<?= $isi->foto ?>','<?= $isi->alamat ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
 							<button onclick="hapusData('<?= $isi->id_operator ?>')"
@@ -99,7 +99,9 @@
 								<label for="">Jabatan</label>
 								<select name="jabatan" id="jabatan" class="form-control" required>
 									<option value="">-PILIH-</option>
-									<option value="Parkir">Parkir</option>
+									<?php foreach($jabatan as $key => $value): ?>
+										<option value="<?=$value->id_jabatan ?>"><?=$value->jabatan ?></option>
+									<?php endforeach;?>
 								</select>
 							</div>
 						</div>

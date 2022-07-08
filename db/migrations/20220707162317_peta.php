@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class Kategori extends AbstractMigration
+final class Peta extends AbstractMigration
 {
     /**
      * Change Method.
@@ -18,9 +18,11 @@ final class Kategori extends AbstractMigration
      */
     public function change(): void
     {
-        $kategori = $this->table('tb_kategori', array('id' => 'id_kategori'));
+        $peta = $this->table('tb_peta', array('id' => 'id_peta'));
 
-        $kategori->addColumn('kategori', 'string')
+        $peta->addColumn('lat', 'string')
+            ->addColumn('lng', 'string')
+            ->addColumn('id_wisata', 'integer')
             ->create();
     }
 }
