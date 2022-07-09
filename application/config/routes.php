@@ -18,6 +18,12 @@ $route['operator-add']['post'] = 'B_operator/simpan';
 $route['operator-add/(:num)']['post'] = 'B_operator/simpan/$1';
 $route['operator-delete/(:num)']['get'] = 'B_operator/delete/$1';
 
+// pengelola
+$route['pengelola']['get'] = 'B_pengelola/index';
+$route['pengelola-add']['post'] = 'B_pengelola/simpan';
+$route['pengelola-add/(:num)']['post'] = 'B_pengelola/simpan/$1';
+$route['pengelola-delete/(:num)']['get'] = 'B_pengelola/delete/$1';
+
 // user
 $route['user']['get'] = 'B_user/index';
 $route['user-add/(:num)']['post'] = 'B_user/simpan/$1';
