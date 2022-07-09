@@ -22,20 +22,21 @@
 				<thead>
 					<tr>
 						<th style="width:10%">No</th>
-						<th>Foto</th>
-						<th>Lat</th>
-						<th>Lng</th>
+						<th>Lokasi</th>
+						<th>Latitude</th>
+						<th>Longtitude</th>
 						<th>Objek Wisata</th>
 						<th style="width:20%"></th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach($peta as $i => $a): ?>
 					<tr>
+						<td><?= $i+1 ?></td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><?= $a->lat ?></td>
+						<td><?= $a->lng ?></td>
+						<td><?= $a->nama_wisata ?></td>
 						<td>
 							<button onclick="editData()"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
@@ -45,13 +46,14 @@
 								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 						</td>
 					</tr>
+					<?php endforeach ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
 
-<div class="modal" id="dataJabatan" tabindex="-1" role="dialog">
+<div class="modal" id="dataPeta" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content" style="border-radius:15px">
 			<div class="modal-header">
@@ -62,11 +64,30 @@
 			</div>
 			<form action="" method="post">
 				<div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Jabatan</label>
-                        <input type="text" class="form-control" placeholder="jabatan" id="jabatan" name="jabatan"
-                            required>
-                    </div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">Latitude</label>
+								<input type="text" class="form-control" placeholder="Ex : -1002132317" id="lat" name="lat"
+									required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">Longtitude</label>
+								<input type="text" class="form-control" placeholder="Ex : 98726364552" id="lng" name="lng"
+									required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="">Objek Wisata</label>
+								<select name="id_objek" id="id_objek" class="form-control">
+									<option value="">-PILIH-</option>
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" onclick="simpandata()" class="btn btn-primary">Save changes</button>
@@ -81,34 +102,42 @@
 	var idx,urlx;
 
     $('#addData').click(function(){
-        $('#judul').html('Tambah Jabatan')
-        $('#dataJabatan').modal('show');
+        $('#judul').html('Tambah Data')
+        $('#dataPeta').modal('show');
     })
 
 	// function untuk tampilkan modal untuk tambah data
-	function editData(id,jabatan) {
+	function editData(id,lat,lng,id_objek) {
 		idx = id
 		// set judul pada title modal
-		$('#judul').html("Edit Jabatan")
-        $('#jabatan').val(jabatan)
+		$('#judul').html("Edit Data")
+        $('#lat').val(lat)
+        $('#lng').val(lng)
+        $('#id_objek').val(id_objek)
 		// perintah membuka modal
-		$('#dataJabatan').modal('show')
+		$('#dataPeta').modal('show')
 	}
 
 	function simpandata()
 	{
-        urlx = 'jabatan-add'
+        urlx = 'peta-add'
 
         if(idx != null){
-            urlx = 'jabatan-add/' + idx;
+            urlx = 'peta-add/' + idx;
         }
         alert(urlx)
-		var jabatan = $('#jabatan').val()
+		var lat = $('#lat').val()
+        var lng = $('#lng').val()
+        var id_objek = $('#id_objek').val()
         $.ajax({
             url: urlx,
             type: 'POST',
             dataType: 'JSON',
-            data: {jabatan: jabatan},
+            data: {
+				lat: lat,
+				lng: lng,
+				id_objek: id_objek,
+			},
             success: function (res) {
                 if(res.pesan){
                     window.location.reload();
@@ -128,7 +157,7 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'jabatan-del/' + id,
+						url: 'peta-del/' + id,
 						type: 'GET',
 						dataType: 'json',
 						success: function (res) {

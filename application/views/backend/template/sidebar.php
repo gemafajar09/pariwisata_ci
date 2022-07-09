@@ -118,7 +118,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('peta') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-map"></span><span class="mtext">Peta</span>
 							</a>
 						</li>
