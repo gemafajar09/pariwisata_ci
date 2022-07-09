@@ -27,10 +27,25 @@ class B_login extends CI_Controller {
 
             if($user['username'] == $username){
                 if(password_verify($password,$user['password_hash'])){
-                    $data = [
+                    $level = $user['level'];
+                    $id_user = $user['id_user'];
+                    if($level == 1)
+                    {
+                        $data = array(
                         'id_user' => $user['id_user'],
                         'level' => $user['level'],
-                    ];
+                        'nama' => 'ADMINISTRATOR',
+                        'foto' => 'assets/src/images/user.png'
+                        );
+                    }elseif($level == 2){
+                        $users = $this->db->query("SELECT * FROM tb_operator WHERE id_user = '$id_user'")->row_array();
+                        $data = array(
+                        'id_user' => $user['id_user'],
+                        'level' => $user['level'],
+                        'nama' => $users['nama'],
+                        'foto' => $users['foto']
+                        );
+                    }
                     $this->session->set_userdata($data);
                     redirect('dashboard');
                 }else{

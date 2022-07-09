@@ -11,25 +11,6 @@
 		</div>
 	</div> -->
 
-	<?php
-
-		$level = $_SESSION['level'];
-		$id_user = $_SESSION['id_user'];
-		if($level == 1)
-		{
-			$dataUser = array(
-			'nama' => 'ADMINISTRATOR',
-			'foto' => 'assets/src/images/user.png'
-			);
-		}elseif($level == 2){
-			$user = $this->db->query("SELECT * FROM tb_operator WHERE id_user = '$id_user'")->row_array();
-			$dataUser = array(
-			'nama' => $user['nama'],
-			'foto' => $user['foto']
-			);
-		}
-	?>
-
 	<div class="header">
 		<div class="header-left">
 			<div class="menu-icon dw dw-menu"></div>
@@ -40,9 +21,9 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="<?= base_url() ?><?= $dataUser['foto'] ?>" alt="">
+							<img src="<?= base_url() ?><?= $_SESSION['foto'] ?>" alt="">
 						</span>
-						<span class="user-name"><?= $dataUser['nama'] ?></span>
+						<span class="user-name"><?= $_SESSION['nama'] ?></span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
