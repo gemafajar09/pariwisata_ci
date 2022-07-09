@@ -28,6 +28,12 @@ $route['galery-add']['post'] = 'B_galery/simpan';
 $route['galery-add/(:num)']['post'] = 'B_galery/simpan/$1';
 $route['galery-del/(:num)']['get'] = 'B_galery/delete/$1';
 
+// peta
+$route['peta']['get'] = 'B_peta/index';
+$route['peta-add']['post'] = 'B_peta/simpan';
+$route['peta-add/(:num)']['post'] = 'B_peta/simpan/$1';
+$route['peta-del/(:num)']['get'] = 'B_peta/delete/$1';
+
 // Berita
 $route['berita']['get'] = 'B_berita/index';
 $route['tambah-berita']['get'] = 'B_berita/tambahBerita';
