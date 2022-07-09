@@ -23,7 +23,7 @@ final class Pengelola extends AbstractMigration
         $pengelola->addColumn('id_user', 'integer')
             ->addColumn('nama', 'string', ['limit' => 255])
             ->addColumn('alamat', 'text')
-            ->addColumn('no_ktp','text')
+            ->addColumn('nik','text')
             ->addColumn('foto','text')
             ->create();
     }

@@ -138,7 +138,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('pengelola') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user"></span><span class="mtext">Daftar Pengelola Wisata</span>
 							</a>
 						</li>
