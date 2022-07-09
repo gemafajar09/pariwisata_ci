@@ -21,6 +21,7 @@ final class Galery extends AbstractMigration
         $galery = $this->table('tb_galery', array('id' => 'id_galery'));
 
         $galery->addColumn('foto', 'text')
+            ->addColumn('kategori', 'string')
             ->addColumn('deskripsi', 'text')
             ->create();
     }

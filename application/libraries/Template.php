@@ -30,7 +30,7 @@ class Template{
 
     public function cek_login() {
         if($this->_ci->session->userdata('id_user') == '') {
-        $this->_ci->session->set_flashdata('pesan','Session Telah Berakhir');
+        $this->_ci->session->set_flashdata(['pesan','Session Telah Berakhir','type' => 'error']);
         redirect('b_login');
         }
     }

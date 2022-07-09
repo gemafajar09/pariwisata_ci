@@ -23,6 +23,7 @@
 					<tr>
 						<th style="width:10%">No</th>
 						<th>Foto</th>
+						<th>Kategori</th>
 						<th>Deskripsi</th>
 						<th style="width:20%"></th>
 					</tr>
@@ -32,9 +33,10 @@
 					<tr>
 						<td><?= $a->id_galery ?></td>
 						<td><img src="<?= base_url($a->foto) ?>" width="130px" alt=""></td>
+						<td><?= $a->kategori ?></td>
 						<td><?= $a->deskripsi ?></td>
 						<td>
-							<button onclick="editData('<?= $a->id_galery ?>','<?= $a->foto ?>','<?= $a->deskripsi ?>')"
+							<button onclick="editData('<?= $a->id_galery ?>','<?= $a->foto ?>','<?= $a->kategori ?>','<?= $a->deskripsi ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
 							<button onclick="hapusData('<?= $a->id_galery ?>')"
@@ -66,6 +68,15 @@
 						<div class="py-3 text-center" id="showGambar"></div>
                     </div>
                     <div class="form-group">
+                        <label for="">Kategori</label>
+                        <select name="kategori" id="kategori" class="form-control">
+							<option value="">-PILIH-</option>
+							<?php foreach($kategori as $i => $a): ?>
+								<option value="<?= $a->id_kategori ?>"><?= $a->kategori ?></option>
+							<?php endforeach ?>
+						</select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Deskripsi</label>
                         <textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
                     </div>
@@ -93,6 +104,7 @@
 		urls = "galery-add";
 
 		var deskripsi = $('#deskripsi').val();
+		var kategori = $('#kategori').val();
 		var foto = $("#foto").prop("files")[0];
 
 		form_data.append("foto", foto);
@@ -100,6 +112,7 @@
 
 		if (idx != null) {
 			form_data.append("id", idx);
+			form_data.append("kategori", kategori);
 			form_data.append("foto_lama", foto_lama);
 			urls = "galery-add/" + idx;
 		}
@@ -120,10 +133,11 @@
 		});
 	}
 
-	function editData(id, foto, deskripsi) {
+	function editData(id, foto, kategori, deskripsi) {
 		foto_lama = foto
 		idx = id
 		$('#deskripsi').val(deskripsi)
+		$('#kategori').val(kategori)
 		document.getElementById('showGambar').innerHTML = '<img src="' + base + '' + foto +
 			'" width="120px"/>';
 
