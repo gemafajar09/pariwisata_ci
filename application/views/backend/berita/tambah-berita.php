@@ -48,12 +48,12 @@
             <div class="form-group row">
                 <label class="col-sm-12 col-md-2 col-form-label">Penulis</label>
                 <div class="col-sm-12 col-md-10">
-                    <input class="form-control" placeholder="Ex: Admin" type="text" id="penulis" name="penulis">
+                    <input class="form-control" placeholder="Ex: Admin" type="text" readonly value="<?= $_SESSION['nama'] ?>" id="penulis" name="penulis">
                 </div>
             </div>
             <div class="text-right">
                 <button class="btn btn-warning" type="submit">Cancel</button>
-                <button class="btn btn-success" onclick="simpandata()" type="button">Button</button>
+                <button class="btn btn-success" onclick="simpandata()" type="button">Simpan</button>
             </div>
         </form>
     </div>

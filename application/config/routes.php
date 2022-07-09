@@ -20,8 +20,13 @@ $route['operator-delete/(:num)']['get'] = 'B_operator/delete/$1';
 
 // user
 $route['user']['get'] = 'B_user/index';
-
 $route['user-add/(:num)']['post'] = 'B_user/simpan/$1';
+
+// galery
+$route['galery']['get'] = 'B_galery/index';
+$route['galery-add']['post'] = 'B_galery/simpan';
+$route['galery-add/(:num)']['post'] = 'B_galery/simpan/$1';
+$route['galery-del/(:num)']['get'] = 'B_galery/delete/$1';
 
 // Berita
 $route['berita']['get'] = 'B_berita/index';

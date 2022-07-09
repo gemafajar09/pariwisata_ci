@@ -113,17 +113,17 @@
 					<!-- operator dinas -->
 					<?php if($_SESSION['level'] == 2): ?>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('galery') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-image"></span><span class="mtext">Galery</span>
 							</a>
 						</li>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
-								<span class="micon dw dw-map"></span><span class="mtext">Rute</span>
+								<span class="micon dw dw-map"></span><span class="mtext">Peta</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('berita') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-file"></span><span class="mtext">Berita</span>
 							</a>
 						</li>
