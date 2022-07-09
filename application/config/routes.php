@@ -51,6 +51,12 @@ $route['jabatan-add']['post'] = 'B_jabatan/simpan';
 $route['jabatan-add/(:num)']['post'] = 'B_jabatan/simpan/$1';
 $route['jabatan-del/(:num)']['get'] = 'B_jabatan/delete/$1';
 
+// kategori
+$route['kategori']['get'] = 'B_kategori/index';
+$route['kategori-add']['post'] = 'B_kategori/simpan';
+$route['kategori-add/(:num)']['post'] = 'B_kategori/simpan/$1';
+$route['kategori-del/(:num)']['get'] = 'B_kategori/delete/$1';
+
 
 // frontend
 $route['home']['get'] = 'F_home/index';

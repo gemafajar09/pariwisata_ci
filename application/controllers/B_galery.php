@@ -3,10 +3,12 @@ class B_galery extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Galery');
+        $this->load->model('Kategori');
     }
 
     public function index() {
         $data['galery'] = $this->Galery->getAll();
+        $data['kategori'] = $this->Kategori->getData();
         $this->template->b_template('backend/galery/index',$data);
     }
 
@@ -30,6 +32,7 @@ class B_galery extends CI_Controller {
                     $filename = 'assets/upload/galery/'.$nameFoto;
                     $data = array(
                         'foto' => $filename,
+                        'kategori' => $_POST['kategori'],
                         'deskripsi' => $_POST['deskripsi'],
                     );
                     $simpan = $this->Galery->simpan($data);
@@ -52,6 +55,7 @@ class B_galery extends CI_Controller {
                     $filename = 'assets/upload/galery/'.$nameFoto;
                     $data = array(
                         'foto' => $filename,
+                        'kategori' => $_POST['kategori'],
                         'deskripsi' => $_POST['deskripsi'],
                     );
                 }

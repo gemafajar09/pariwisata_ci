@@ -4,6 +4,11 @@ class Galery extends CI_Model {
 	{
         return [
 			[
+				'field' => 'kategori', 
+				'label' => 'Kategori', 
+				'rules' => 'required'
+			],
+			[
 				'field' => 'deskripsi', 
 				'label' => 'Deskripsi', 
 				'rules' => 'required'

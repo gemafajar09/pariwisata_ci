@@ -1,3 +1,8 @@
+<style>
+	.brand-logo a{
+		background: white;
+	}
+</style>
 <div class="right-sidebar">
 		<div class="sidebar-title">
 			<h3 class="weight-600 font-16 text-blue">
@@ -76,8 +81,8 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="index.html">
-				<img src="<?= base_url() ?>assets/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-				<img src="<?= base_url() ?>assets/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+				<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" class="dark-logo">
+				<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" class="light-logo">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -140,6 +145,16 @@
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-chat"></span><span class="mtext">Testimoni</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="<?= base_url('kategori') ?>" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-file"></span><span class="mtext">Kategori</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="<?= base_url('berita') ?>" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-island"></span><span class="mtext">Objek Wisata</span>
 							</a>
 						</li>
 					<?php endif ?>
