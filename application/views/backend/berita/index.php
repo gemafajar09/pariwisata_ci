@@ -2,6 +2,10 @@
     .form-control {
         border-radius: 15px;
     }
+
+    .wysihtml5-sandbox {
+        width: 100% !important;
+    }
 </style>
 
 <div class="pd-ltr-20 xs-pd-20-10">

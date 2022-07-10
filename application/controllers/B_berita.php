@@ -2,7 +2,6 @@
 
 class B_berita extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -34,7 +33,7 @@ class B_berita extends CI_Controller
         } else {
             if (!isset($_POST['id'])) {
                 $filename = fileUpload($_FILES['foto'], 'assets/upload/berita/');
-
+ 
                 $data = array(
                     'judul' => $_POST['judul'],
                     'isi_berita' => $_POST['isi_berita'],

@@ -20,6 +20,9 @@ $route['operator-delete/(:num)']['get'] = 'B_operator/delete/$1';
 
 // user
 $route['user']['get'] = 'B_user/index';
+$route['user-up/(:num)']['get'] = 'B_user/unlock/$1';
+$route['user-pass/(:num)']['post'] = 'B_user/update/$1';
+$route['user-del/(:num)']['get'] = 'B_user/delete/$1';
 
 $route['user-add/(:num)']['post'] = 'B_user/simpan/$1';
 
@@ -30,15 +33,16 @@ $route['berita-add']['post'] = 'B_berita/simpan';
 $route['berita-add/(:num)']['post'] = 'B_berita/simpan/$1';
 $route['berita-del/(:num)']['get'] = 'B_berita/delete/$1';
 
-$route['user-up/(:num)']['get'] = 'B_user/unlock/$1';
-$route['user-pass/(:num)']['post'] = 'B_user/update/$1';
-$route['user-del/(:num)']['get'] = 'B_user/delete/$1';
-
 // jabatan
 $route['jabatan']['get'] = 'B_jabatan/index';
 $route['jabatan-add']['post'] = 'B_jabatan/simpan';
 $route['jabatan-add/(:num)']['post'] = 'B_jabatan/simpan/$1';
 $route['jabatan-del/(:num)']['get'] = 'B_jabatan/delete/$1';
+
+// Wisata
+$route['wisata']['get'] = 'B_wisata/index';
+$route['wisata-add']['post'] = 'B_wisata/simpan';
+$route['wisata-add/(:num)']['post'] = 'B_wisata/simpan/$1';
 
 
 // frontend
