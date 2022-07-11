@@ -153,7 +153,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="<?= base_url('berita') ?>" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('wisata') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-island"></span><span class="mtext">Objek Wisata</span>
 							</a>
 						</li>

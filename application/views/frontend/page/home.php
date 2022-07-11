@@ -10,7 +10,7 @@
     }
 }
 </style>
-<section>
+<section id="home">
 	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -20,7 +20,7 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img class="d-block sliderx w-100"
-					src="<?= base_url('assets/src/images/banner-img.png') ?>" alt="First slide">
+					src="https://www.handalselaras.com/wp-content/uploads/2020/12/Tips-Wisata-Bali-Feature-Image-1030x579.jpg" alt="First slide">
 			</div>
 			<div class="carousel-item">
 				<img class="d-block sliderx w-100"
@@ -42,18 +42,60 @@
 	</div>
 </section>
 
-<section>
+<section id="pariwisata">
     <div class="container mt-5">
-        <h3>Priwisata</h3>
+		<center>
+			<h2>Priwisata</h2>
+		</center>
         <hr>
         <div class="row">
             <?php
-                for($i = 0; $i < 9; $i++) :
+                for($i = 0; $i < 8; $i++) :
+            ?>
+                <div class="col-md-6 p-3">
+                    <div class="card">
+                        <div class="card-body">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
+								</div>
+								<div class="col-md-8">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus neque excepturi sequi inventore ut quaerat cum 
+									<br>
+									<br>
+									<a href="" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>
+									<a href="" class="btn btn-sm btn-info ml-3" style="float:right">Lihat Rute</a>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            <?php endfor ?>
+        </div>
+    </div>
+</section>
+
+<section id="galery">
+    <div class="container mt-5">
+		<center>
+			<h2>Galery</h2>
+		</center>
+        <hr>
+        <div class="row">
+            <?php
+                for($i = 0; $i < 8; $i++) :
             ?>
                 <div class="col-md-4 p-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus neque excepturi sequi inventore ut quaerat cum totam velit! Rem laboriosam ipsa odio eius illo? Aliquam autem voluptate beatae atque?</h5>
+							<div class="row">
+								<div class="col-md-12">
+									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
+								</div>
+								<div class="col-md-12">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus neque excepturi sequi inventore ut quaerat cum 
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -61,4 +103,37 @@
         </div>
     </div>
     
+</section>
+
+
+<section id="berita">
+    <div class="container mt-5">
+		<center>
+			<h2>Berita</h2>
+		</center>
+        <hr>
+        <div class="row">
+            <?php
+                for($i = 0; $i < 8; $i++) :
+            ?>
+                <div class="col-md-6 p-3">
+                    <div class="card">
+                        <div class="card-body">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
+								</div>
+								<div class="col-md-8">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus neque excepturi sequi inventore ut quaerat cum 
+									<br>
+									<br>
+									<a href="" class="btn btn-sm btn-info ml-3" style="float:right">Selengkapnya</a>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            <?php endfor ?>
+        </div>
+    </div>
 </section>

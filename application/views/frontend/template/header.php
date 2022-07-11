@@ -1,24 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
   <a class="navbar-brand" href="#">
-    <img src="<?= base_url('assets/src/images/caution-sign.png') ?>" width="30" height="30" class="d-inline-block align-top" alt="">
-    Bootstrap
+    <img src="<?= base_url() ?>assets/src/images/priwisata1.png" width="100" height="50" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:30%">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#pariwisata">Pariwisata</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#galery">Galery</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="#berita">Berita</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#testimoni">Testimoni</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#faq">Faq</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Register</a>
       </li>
     </ul>
   </div>
