@@ -61,6 +61,7 @@ $route['jabatan-del/(:num)']['get'] = 'B_jabatan/delete/$1';
 $route['wisata']['get'] = 'B_wisata/index';
 $route['wisata-add']['post'] = 'B_wisata/simpan';
 $route['wisata-add/(:num)']['post'] = 'B_wisata/simpan/$1';
+$route['wisata-del/(:num)']['get'] = 'B_wisata/delete/$1';
 
 // kategori
 $route['kategori']['get'] = 'B_kategori/index';

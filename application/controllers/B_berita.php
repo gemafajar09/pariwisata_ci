@@ -33,7 +33,7 @@ class B_berita extends CI_Controller
         } else {
             if (!isset($_POST['id'])) {
                 $filename = fileUpload($_FILES['foto'], 'assets/upload/berita/');
- 
+
                 $data = array(
                     'judul' => $_POST['judul'],
                     'isi_berita' => $_POST['isi_berita'],
@@ -44,17 +44,15 @@ class B_berita extends CI_Controller
 
                 $simpan = $this->Berita->simpan($data);
                 echo json_encode(['pesan' => $simpan]);
-
             } else {
 
-                if ($_POST['foto'] = 'undefined') {
+                if ($_POST['foto'] == 'undefined') {
                     $data = array(
                         'judul' => $_POST['judul'],
                         'isi_berita' => $_POST['isi_berita'],
                         'penulis' => $_POST['penulis'],
                         'tgl_publish' => $date
                     );
-
                 } else {
 
                     $path = "assets/upload/berita/" . $_POST['foto_lama'];
@@ -77,7 +75,8 @@ class B_berita extends CI_Controller
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $hapus = $this->Berita->delete($id);
         echo json_encode(['pesan' => $hapus]);
     }
