@@ -40,20 +40,20 @@
 					<?php foreach ($wisata as $i => $isi) : ?>
 						<tr>
 							<td><?= $i + 1 ?></td>
-							<td><i>User test*</i></td>
+							<td><?= $isi->id_user ?></td>
 							<td><?= $isi->nama_wisata ?></td>
 							<td><?= $isi->alamat ?></td>
 							<td><?= $isi->pusat_informasi ?></td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->p3k) ?>" width="130px" alt="">
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->mushola) ?>" width="130px" alt="">
-							<td><?= $isi->luas_mushola ?> m<sup>2</sup</td>
+							<td><?= $isi->luas_mushola ?> m<sup>2</sup< /td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->tempat_parkir) ?>" width="130px" alt="">
-							<td><?= $isi->luas_tempat_parkir ?> m<sup>2</sup</td>
+							<td><?= $isi->luas_tempat_parkir ?> m<sup>2</sup< /td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->wc) ?>" width="130px" alt="">
 							<td><?= $isi->jumlah_wc ?></td>
 							<td>
-								<button onclick="editData()" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-								<button onclick="hapusData()" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
+								<button onclick="editData('<?= $isi->id_wisata ?>','<?= $isi->nama_wisata ?>','<?= $isi->alamat ?>','<?= $isi->pusat_informasi ?>','<?= $isi->p3k ?>','<?= $isi->mushola ?>','<?= $isi->luas_mushola ?>','<?= $isi->tempat_parkir ?>','<?= $isi->luas_tempat_parkir ?>','<?= $isi->wc ?>','<?= $isi->jumlah_wc ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
+								<button onclick="hapusData('<?= $isi->id_wisata ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 							</td>
 						</tr>
 					<?php endforeach ?>
@@ -130,7 +130,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" onclick="simpandata()" class="btn btn-primary">Tambah Data</button>
+					<button type="button" onclick="simpandata()" class="btn btn-primary">Simpan</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</form>
@@ -140,21 +140,12 @@
 
 <script>
 	var idx, urlx;
+	var base = '<?= base_url() ?>'
 
 	$('#addData').click(function() {
 		$('#judul').html('Tambah Wisata')
 		$('#dataWisata').modal('show');
 	})
-
-
-	function editData(id, jabatan) {
-		idx = id
-
-		$('#judul').html("Edit Wisata")
-		$('#jabatan').val(jabatan)
-
-		$('#dataWisata').modal('show')
-	}
 
 	function simpandata() {
 		var base = '<?= base_url() ?>'
@@ -186,7 +177,7 @@
 		form_data.append("wc", wc);
 
 		if (id != null) {
-			form_data.append("id_wisata", id);
+			// form_data.append("id_wisata", id);
 			form_data.append("path_parkir", path_parkir);
 			form_data.append("path_wc", path_wc);
 			form_data.append("path_mushola", path_mushola);
@@ -210,6 +201,33 @@
 		});
 	}
 
+	function editData(idx, nama_wisata, alamat, pusat_informasi, p3k, mushola, luas_mushola, tempat_parkir, luas_tempat_parkir, wc, jumlah_wc) {
+
+		id = idx
+		path_p3k = p3k
+		path_wc = wc
+		path_parkir = tempat_parkir
+		path_mushola = mushola
+
+		$('#nama_wisata').val(nama_wisata)
+		$('#alamat').val(alamat)
+		$('#pusat_informasi').val(pusat_informasi)
+		$('#luas_tempat_parkir').val(luas_tempat_parkir)
+		$('#luas_mushola').val(luas_mushola)
+		$('#jumlah_wc').val(jumlah_wc)
+		document.getElementById('showGambarP3K').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + p3k +
+			'" width="120px"/>';
+		document.getElementById('showGambarMushola').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + mushola +
+			'" width="120px"/>';
+		document.getElementById('showGambarParkir').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + tempat_parkir +
+			'" width="120px"/>';
+		document.getElementById('showGambarWc').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + wc +
+			'" width="120px"/>';
+
+		$('#judul').html("Edit Data")
+		$('#dataWisata').modal('show')
+
+	}
 
 	function hapusData(id) {
 		swal({
@@ -222,7 +240,7 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'jabatan-del/' + id,
+						url: 'wisata-del/' + id,
 						type: 'GET',
 						dataType: 'json',
 						success: function(res) {

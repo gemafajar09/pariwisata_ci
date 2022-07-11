@@ -52,4 +52,21 @@ class Wisata extends CI_Model
     {
         return $this->db->where(['id_wisata' => $id])->update('tb_wisata',$data);
     }
+
+    public function delete($id){
+        $wisata = $this->db->get_Where('tb_wisata',['id_wisata' => $id])->row_array();
+        if (file_exists($wisata['p3k'])){
+            unlink($wisata['p3k']);
+        }
+        if (file_exists($wisata['mushola'])){
+            unlink($wisata['mushola']);
+        }
+        if (file_exists($wisata['tempat_parkir'])){
+            unlink($wisata['tempat_parkir']);
+        }
+        if (file_exists($wisata['wc'])){
+            unlink($wisata['wc']);
+        }
+         return $this->db->where('id_wisata',$wisata['id_wisata'])->delete('tb_wisata');
+    }
 }
