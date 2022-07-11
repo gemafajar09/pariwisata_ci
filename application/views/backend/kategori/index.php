@@ -3,7 +3,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Data Peta</li>
+				<li class="breadcrumb-item active" aria-current="page">Data Kategori</li>
 			</ol>
 		</nav>
 	</div>
@@ -11,7 +11,7 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="float-left">
-				Data Peta
+				Data Kategori
 			</div>
 			<div class="float-right">
 				<button style="border-radius:15px" class="btn btn-primary btn-sm" type="button" id="addData">Add Data</button>
@@ -22,26 +22,20 @@
 				<thead>
 					<tr>
 						<th style="width:10%">No</th>
-						<th>Lokasi</th>
-						<th>Latitude</th>
-						<th>Longtitude</th>
-						<th>Objek Wisata</th>
+						<th>Kategori</th>
 						<th style="width:20%"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($peta as $i => $a): ?>
+					<?php foreach($kategori as $i => $isi): ?>
 					<tr>
 						<td><?= $i+1 ?></td>
-						<td></td>
-						<td><?= $a->lat ?></td>
-						<td><?= $a->lng ?></td>
-						<td><?= $a->nama_wisata ?></td>
+						<td><?= $isi->kategori ?></td>
 						<td>
-							<button onclick="editData()"
+							<button onclick="editData('<?= $isi->id_kategori ?>','<?= $isi->kategori ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-							<button onclick="hapusData()"
+							<button onclick="hapusData('<?= $isi->id_kategori ?>')"
 								style="border-radius:25px;background-color: #ea003a;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 						</td>
@@ -53,7 +47,7 @@
 	</div>
 </div>
 
-<div class="modal" id="dataPeta" tabindex="-1" role="dialog">
+<div class="modal" id="datakategori" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content" style="border-radius:15px">
 			<div class="modal-header">
@@ -64,30 +58,11 @@
 			</div>
 			<form action="" method="post">
 				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="">Latitude</label>
-								<input type="text" class="form-control" placeholder="Ex : -1002132317" id="lat" name="lat"
-									required>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="">Longtitude</label>
-								<input type="text" class="form-control" placeholder="Ex : 98726364552" id="lng" name="lng"
-									required>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-group">
-								<label for="">Objek Wisata</label>
-								<select name="id_objek" id="id_objek" class="form-control">
-									<option value="">-PILIH-</option>
-								</select>
-							</div>
-						</div>
-					</div>
+                    <div class="form-group">
+                        <label for="">Kategori</label>
+                        <input type="text" class="form-control" placeholder="kategori" id="kategori" name="kategori"
+                            required>
+                    </div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" onclick="simpandata()" class="btn btn-primary">Save changes</button>
@@ -102,42 +77,34 @@
 	var idx,urlx;
 
     $('#addData').click(function(){
-        $('#judul').html('Tambah Data')
-        $('#dataPeta').modal('show');
+        $('#judul').html('Tambah Kategori')
+        $('#datakategori').modal('show');
     })
 
 	// function untuk tampilkan modal untuk tambah data
-	function editData(id,lat,lng,id_objek) {
+	function editData(id,kategori) {
 		idx = id
 		// set judul pada title modal
-		$('#judul').html("Edit Data")
-        $('#lat').val(lat)
-        $('#lng').val(lng)
-        $('#id_objek').val(id_objek)
+		$('#judul').html("Edit Kategori")
+        $('#kategori').val(kategori)
 		// perintah membuka modal
-		$('#dataPeta').modal('show')
+		$('#datakategori').modal('show')
 	}
 
 	function simpandata()
 	{
-        urlx = 'peta-add'
+        urlx = 'kategori-add'
 
         if(idx != null){
-            urlx = 'peta-add/' + idx;
+            urlx = 'kategori-add/' + idx;
         }
-        alert(urlx)
-		var lat = $('#lat').val()
-        var lng = $('#lng').val()
-        var id_objek = $('#id_objek').val()
+        
+		var kategori = $('#kategori').val()
         $.ajax({
             url: urlx,
             type: 'POST',
             dataType: 'JSON',
-            data: {
-				lat: lat,
-				lng: lng,
-				id_objek: id_objek,
-			},
+            data: {kategori: kategori},
             success: function (res) {
                 if(res.pesan){
                     window.location.reload();
@@ -157,7 +124,7 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'peta-del/' + id,
+						url: 'kategori-del/' + id,
 						type: 'GET',
 						dataType: 'json',
 						success: function (res) {

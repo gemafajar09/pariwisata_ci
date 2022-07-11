@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class Pengelola extends AbstractMigration
+final class Galery extends AbstractMigration
 {
     /**
      * Change Method.
@@ -18,13 +18,11 @@ final class Pengelola extends AbstractMigration
      */
     public function change(): void
     {
-        $pengelola = $this->table('tb_pengelola', array('id' => 'id_pengelola'));
+        $galery = $this->table('tb_galery', array('id' => 'id_galery'));
 
-        $pengelola->addColumn('id_user', 'integer')
-            ->addColumn('nama', 'string', ['limit' => 255])
-            ->addColumn('alamat', 'text')
-            ->addColumn('nik','text')
-            ->addColumn('foto','text')
+        $galery->addColumn('foto', 'text')
+            ->addColumn('kategori', 'string')
+            ->addColumn('deskripsi', 'text')
             ->create();
     }
 }

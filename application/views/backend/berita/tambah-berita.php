@@ -48,13 +48,15 @@
             <div class="form-group">
                 <label class="col-sm-12 col-md-2 col-form-label">Penulis</label>
                 <div class="col-sm-12 col-md-10">
-                    <input class="form-control" placeholder="Ex: Admin" type="text" id="penulis" name="penulis">
+                    <input class="form-control" placeholder="Ex: Admin" type="text" readonly value="<?= $_SESSION['nama'] ?>" id="penulis" name="penulis">
                 </div>
             </div>
             <div class="text-right">
+
                 <a class="btn btn-warning" href="javascript:history.back()">Cancel</a>
                 <!-- <button class="btn btn-warning" type="button">Cancel</button> -->
                 <button class="btn btn-success" onclick="simpandata()" type="button">Button</button>
+
             </div>
         </form>
     </div>

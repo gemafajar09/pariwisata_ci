@@ -1,45 +1,56 @@
+<style>
+	.form-control {
+		border-radius: 15px;
+	}
+</style>
+
 <div class="pd-ltr-20 xs-pd-20-10">
 	<div class="page-header">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Data Galery</li>
+				<li class="breadcrumb-item active" aria-current="page">Data Pengelola Wisata</li>
 			</ol>
 		</nav>
 	</div>
-
+	
 	<div class="card">
 		<div class="card-header">
 			<div class="float-left">
-				Data Galery
+				Data Pengelola Wisata
 			</div>
 			<div class="float-right">
-				<button style="border-radius:15px" class="btn btn-primary btn-sm" type="button" id="addData">Add Data</button>
+				<button style="border-radius:15px" class="btn btn-primary btn-sm" type="button" id="addData">Add
+					Data</button>
 			</div>
 		</div>
 		<div class="card-body">
 			<table class="table" id="tables">
 				<thead>
 					<tr>
-						<th style="width:10%">No</th>
+						<th>No</th>
 						<th>Foto</th>
-						<th>Kategori</th>
-						<th>Deskripsi</th>
-						<th style="width:20%"></th>
+						<th>Nama</th>
+						<th>Nik</th>
+						<th>Alamat</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($galery as $i => $a): ?>
+					<?php foreach($pengelola as $i => $isi): ?>
 					<tr>
-						<td><?= $a->id_galery ?></td>
-						<td><img src="<?= base_url($a->foto) ?>" width="130px" alt=""></td>
-						<td><?= $a->kategori ?></td>
-						<td><?= $a->deskripsi ?></td>
+						<td><?= $i+1 ?></td>
+						<td><img src="<?= base_url($isi->foto) ?>" width="130px" alt="">
+						</td>
+						<td><?= $isi->nama ?></td>
+						<td><?= $isi->nik ?></td>
+						<td><?= $isi->alamat ?></td>
 						<td>
-							<button onclick="editData('<?= $a->id_galery ?>','<?= $a->foto ?>','<?= $a->kategori ?>','<?= $a->deskripsi ?>')"
+							<button
+								onclick="editData('<?= $isi->id_pengelola ?>','<?= $isi->nama ?>','<?= $isi->nik ?>','<?= $isi->foto ?>','<?= $isi->alamat ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-							<button onclick="hapusData('<?= $a->id_galery ?>')"
+							<button onclick="hapusData('<?= $isi->id_pengelola ?>')"
 								style="border-radius:25px;background-color: #ea003a;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 						</td>
@@ -51,7 +62,7 @@
 	</div>
 </div>
 
-<div class="modal" id="dataGalery" tabindex="-1" role="dialog">
+<div class="modal" id="datapengelola" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content" style="border-radius:15px">
 			<div class="modal-header">
@@ -63,22 +74,23 @@
 			<form action="" method="post">
 				<div class="modal-body">
                     <div class="form-group">
+                        <label for="">Nama</label>
+                        <input type="text" class="form-control" placeholder="Nama" id="nama" name="nama"
+                            required>
+                    </div>
+                    <div class="form-group">
                         <label for="">Foto</label>
                         <input type="file" class="form-control" onchange="tampilfoto()" id="foto" name="foto">
-						<div class="py-3 text-center" id="showGambar"></div>
+                        <div class="py-3 text-center" id="showGambar"></div>
                     </div>
                     <div class="form-group">
-                        <label for="">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-control">
-							<option value="">-PILIH-</option>
-							<?php foreach($kategori as $i => $a): ?>
-								<option value="<?= $a->id_kategori ?>"><?= $a->kategori ?></option>
-							<?php endforeach ?>
-						</select>
+                        <label for="">Nik</label>
+                        <input type="number" class="form-control" placeholder="EX: 123331233312" id="nik"
+                            name="nik" required>
                     </div>
-                    <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
+                    <div class="from-group">
+                        <label for="">Alamat</label>
+                        <textarea name="alamat" id="alamat" class="form-control"></textarea>
                     </div>
 				</div>
 				<div class="modal-footer">
@@ -92,29 +104,36 @@
 
 <script>
 	var base = '<?= base_url() ?>'
-	var idx,urlx,foto_lama;
+	// inisialisasi variable global unutk menampung data ketika edit data
+	var id, urls, foto_lama;
 
-    $('#addData').click(function(){
-        $('#judul').html('Tambah Galery')
-        $('#dataGalery').modal('show');
-    })
+	// function untuk tampilkan modal untuk tambah data
+	$('#addData').click(function () {
+		// set judul pada title modal
+		$('#judul').html("Tambah Data")
+		// perintah membuka modal
+		$('#datapengelola').modal('show')
+	})
 
+	// aksi simpan dan edit data yang akan dikirimkan ke controller
 	function simpandata() {
 		var form_data = new FormData();
-		urls = "galery-add";
+		urls = "pengelola-add";
 
-		var deskripsi = $('#deskripsi').val();
-		var kategori = $('#kategori').val();
+		var nama = $('#nama').val();
+		var nik = $('#nik').val();
+		var alamat = $('#alamat').val();
 		var foto = $("#foto").prop("files")[0];
 
 		form_data.append("foto", foto);
-		form_data.append("deskripsi", deskripsi);
+		form_data.append("nama", nama);
+		form_data.append("nik", nik);
+		form_data.append("alamat", alamat);
 
-		if (idx != null) {
-			form_data.append("id", idx);
-			form_data.append("kategori", kategori);
+		if (id != null) {
+			form_data.append("id", id);
 			form_data.append("foto_lama", foto_lama);
-			urls = "galery-add/" + idx;
+			urls = "pengelola-add/" + id;
 		}
 
 		$.ajax({
@@ -133,16 +152,17 @@
 		});
 	}
 
-	function editData(id, foto, kategori, deskripsi) {
+	function editData(idx, nama, nik, foto, alamat) {
 		foto_lama = foto
-		idx = id
-		$('#deskripsi').val(deskripsi)
-		$('#kategori').val(kategori)
+		id = idx
+		$('#nama').val(nama)
+		$('#nik').val(nik)
+		$('#alamat').val(alamat)
 		document.getElementById('showGambar').innerHTML = '<img src="' + base + '' + foto +
 			'" width="120px"/>';
 
 		$('#judul').html("Edit Data")
-		$('#dataGalery').modal('show')
+		$('#datapengelola').modal('show')
 	}
 
 	function hapusData(id) {
@@ -156,7 +176,7 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'galery-del/' + id,
+						url: 'pengelola-delete/' + id,
 						type: 'GET',
 						dataType: 'json',
 						success: function (res) {
@@ -172,6 +192,7 @@
 
 	}
 
+	// function dibawah untuk menmpilkan gambar pada saat melakukan upload file
 	function tampilfoto() {
 		var fileInput = document.getElementById('foto');
 		var filePath = fileInput.value;
@@ -199,4 +220,5 @@
 			}
 		}
 	}
+
 </script>
