@@ -55,7 +55,7 @@
 
                 <a class="btn btn-warning" href="javascript:history.back()">Cancel</a>
                 <!-- <button class="btn btn-warning" type="button">Cancel</button> -->
-                <button class="btn btn-success" onclick="simpandata()" type="button">Button</button>
+                <button class="btn btn-success" onclick="simpandata()" type="button">Simpan</button>
 
             </div>
         </form>
@@ -78,11 +78,6 @@
         form_data.append("isi_berita", isi);
         form_data.append("foto", foto);
         form_data.append("penulis", penulis);
-
-        if (id != "null") {
-            form_data.append("id", id);
-            form_data.append("foto_lama", foto_lama);
-        }
 
         $.ajax({
             url: urls,

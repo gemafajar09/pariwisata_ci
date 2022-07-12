@@ -48,7 +48,7 @@ class B_wisata extends CI_Controller
                 $simpan = $this->Wisata->simpan($data);
                 echo json_encode(['pesan' => $simpan]);
             } else {
-                if ($_POST['p3k'] = 'undefined' || $_POST['mushola'] == 'undefined' || $_POST['tempat_parkir'] == 'undefined' || $_POST['wc'] == 'undefined') {
+                if ($_POST['p3k'] === 'undefined' || $_POST['mushola'] === 'undefined' || $_POST['tempat_parkir'] === 'undefined' || $_POST['wc'] === 'undefined') {
                     $data = array(
                         'id_user' => $id_user,
                         'nama_wisata' => $_POST['nama_wisata'],
