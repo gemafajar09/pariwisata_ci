@@ -42,9 +42,9 @@
                                     elseif($isi->level == 2)
                                     echo 'Operator';
                                     elseif($isi->level == 3)
-                                    echo 'petugas wisata';
+                                    echo 'Pengelola wisata';
                                     elseif($isi->level == 4)
-                                    echo 'pengelola wisata';
+                                    echo 'Petugas wisata';
                                     elseif($isi->level == 5)
                                     echo 'calon petugas';
                                     else

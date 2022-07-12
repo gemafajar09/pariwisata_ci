@@ -40,7 +40,7 @@
 					<?php foreach ($wisata as $i => $isi) : ?>
 						<tr>
 							<td><?= $i + 1 ?></td>
-							<td><?= $isi->id_user ?></td>
+							<td><?= $isi->nama ?></td>
 							<td><?= $isi->nama_wisata ?></td>
 							<td><?= $isi->alamat ?></td>
 							<td><?= $isi->pusat_informasi ?></td>
@@ -148,11 +148,8 @@
 	})
 
 	function simpandata() {
-		var base = '<?= base_url() ?>'
-		var id, urls;
-
 		var form_data = new FormData();
-		urls = "wisata-add";
+		urlx = "wisata-add";
 
 		var nama_wisata = $('#nama_wisata').val();
 		var pusat_informasi = $('#pusat_informasi').val();
@@ -176,17 +173,17 @@
 		form_data.append("p3k", p3k);
 		form_data.append("wc", wc);
 
-		if (id != null) {
+		if (idx != null) {
 			// form_data.append("id_wisata", id);
 			form_data.append("path_parkir", path_parkir);
 			form_data.append("path_wc", path_wc);
 			form_data.append("path_mushola", path_mushola);
 			form_data.append("path_p3k", path_p3k);
-			urls = "wisata-add/" + id;
+			urlx = "wisata-add/" + idx;
 		}
 
 		$.ajax({
-			url: urls,
+			url: urlx,
 			dataType: 'JSON',
 			cache: false,
 			contentType: false,
@@ -201,9 +198,9 @@
 		});
 	}
 
-	function editData(idx, nama_wisata, alamat, pusat_informasi, p3k, mushola, luas_mushola, tempat_parkir, luas_tempat_parkir, wc, jumlah_wc) {
+	function editData(id, nama_wisata, alamat, pusat_informasi, p3k, mushola, luas_mushola, tempat_parkir, luas_tempat_parkir, wc, jumlah_wc) {
 
-		id = idx
+		idx = id
 		path_p3k = p3k
 		path_wc = wc
 		path_parkir = tempat_parkir

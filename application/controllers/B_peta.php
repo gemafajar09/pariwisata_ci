@@ -3,10 +3,12 @@ class B_peta extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Peta');
+        $this->load->model('Wisata');
     }
 
     public function index() {
         $data['peta'] = $this->Peta->getAll();
+        $data['wisata'] = $this->Wisata->getData();
         $this->template->b_template('backend/peta/index',$data);
     }
 

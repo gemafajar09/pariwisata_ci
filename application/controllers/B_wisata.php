@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class B_wisata extends CI_Controller
 {
@@ -25,7 +25,7 @@ class B_wisata extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(['errors' => $this->form_validation->error_array()]);
         } else {
-            if (!isset($_POST['id'])) {
+            if (!isset($id)) {
                 $foto_p3k = fileUpload($_FILES['p3k'], 'assets/upload/wisata/');
                 $foto_mushola = fileUpload($_FILES['mushola'], 'assets/upload/wisata/');
                 $foto_parkir = fileUpload($_FILES['tempat_parkir'], 'assets/upload/wisata/');
@@ -48,7 +48,7 @@ class B_wisata extends CI_Controller
                 $simpan = $this->Wisata->simpan($data);
                 echo json_encode(['pesan' => $simpan]);
             } else {
-                if ($_POST['p3k'] === 'undefined' || $_POST['mushola'] === 'undefined' || $_POST['tempat_parkir'] === 'undefined' || $_POST['wc'] === 'undefined') {
+                if (!isset($_FILES['p3k']['name']) || !isset($_FILES['mushola']['name']) || !isset($_FILES['tempat_parkir']['name']) || !isset($_FILES['wc']['name']) ){
                     $data = array(
                         'id_user' => $id_user,
                         'nama_wisata' => $_POST['nama_wisata'],
@@ -90,7 +90,7 @@ class B_wisata extends CI_Controller
                         'jumlah_wc' => $_POST['jumlah_wc'],
                     );
                 }
-                $edit = $this->Wisata->update($data, $_POST['id']);
+                $edit = $this->Wisata->update($data, $id);
                 echo json_encode(['pesan' => $edit]);
             }
         }
