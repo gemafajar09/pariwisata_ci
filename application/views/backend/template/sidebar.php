@@ -178,11 +178,6 @@
 						</li>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
-								<span class="micon dw dw-ticket"></span><span class="mtext">Tiket</span>
-							</a>
-						</li>
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-file"></span><span class="mtext">Jabatan</span>
 							</a>
 						</li>
