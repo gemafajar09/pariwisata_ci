@@ -22,7 +22,7 @@ class B_login extends CI_Controller {
             if(!isset($user))
             {
                 $this->session->set_flashdata(['pesan','Data tidak ditemukan','type' => 'error']);
-			    redirect('b_login');
+			    redirect('home');
             }
 
             if($user['username'] == $username){
@@ -58,15 +58,15 @@ class B_login extends CI_Controller {
                     redirect('dashboard');
                 }else{
                     $this->session->set_flashdata(['pesan' =>'Password Salah.','type' => 'error']);
-			        redirect('b_login');
+			        redirect('home');
                 }
             }else{
                 $this->session->set_flashdata(['pesan' => 'Username Salah.','type' => 'error']);
-			    redirect('b_login');
+			    redirect('home');
             }
 		}else{
             $this->session->set_flashdata(['pesan' => 'Silahkan Periksa Kembali','type' => 'error']);
-			redirect('b_login');
+			redirect('home');
 		}
     }
 
@@ -74,6 +74,6 @@ class B_login extends CI_Controller {
     {
         $this->session->unset_userdata('id_user');
         $this->session->set_flashdata(['pesan' => 'Anda Telah Keluar.','type' => 'success']);
-        redirect('b_login');
+        redirect('home');
     }
 }

@@ -8,6 +8,7 @@
     <?= $link ?>
 </head>
 <body>
+    
     <?= $header ?>
     <?= $content ?>
     <?= $script ?>

@@ -6,4 +6,14 @@
     $(document).ready(function() {
         $('.carousel').carousel()
     })
+
+    function loginx()
+    {
+        $('#logins').modal('show');
+    }
+
+    function registerx()
+    {
+        $('#register-petugas').modal('show');
+    }
 </script>
