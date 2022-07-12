@@ -98,7 +98,7 @@
         if(idx != null){
             urlx = 'jabatan-add/' + idx;
         }
-        alert(urlx)
+		
 		var jabatan = $('#jabatan').val()
         $.ajax({
             url: urlx,

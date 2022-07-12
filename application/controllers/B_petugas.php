@@ -1,10 +1,10 @@
 <?php
 
-class B_pengelola extends CI_Controller {
+class B_petugas extends CI_Controller {
     public function __construct() {
         parent::__construct();
         // panggil model pada folder models dimana data pada model berfunsi untuk melakukan CRUD
-        $this->load->model('Pengelola');
+        $this->load->model('Petugas');
         $this->load->model('User');
     }
 
@@ -44,12 +44,12 @@ class B_pengelola extends CI_Controller {
                 if(!isset($_FILES['foto']['name'])){
                     $filename = 'assets/src/images/user.png';
                 }else{
-                    if(!file_exists('assets/upload/pengelola')){
-                        mkdir('assets/upload/pengelola');
+                    if(!file_exists('assets/upload/petugas')){
+                        mkdir('assets/upload/petugas');
                     }
                     // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder helper
-                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/pengelola/');
-                    $filename = 'assets/upload/pengelola/'.$nameFoto;
+                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/petugas/');
+                    $filename = 'assets/upload/petugas/'.$nameFoto;
                 }
                 // tahapan dibawah berfungsi untuk menyimpan data kedalam bentuk array sebelum di kirim ke model
                 $data = array(
@@ -85,8 +85,8 @@ class B_pengelola extends CI_Controller {
                     }
 
                     // simpan file baru ke folder yang ditentukan
-                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/pengelola/');
-                    $filename = 'assets/upload/pengelola/'.$nameFoto;
+                    $nameFoto = fileUpload($_FILES['foto'],'assets/upload/petugas/');
+                    $filename = 'assets/upload/petugas/'.$nameFoto;
                     $data = array(
                         'nama' => $_POST['nama'],
                         'alamat' => $_POST['alamat'],

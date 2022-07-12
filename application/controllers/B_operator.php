@@ -5,6 +5,7 @@ class B_operator extends CI_Controller {
         parent::__construct();
         // panggil model pada folder models dimana data pada model berfunsi untuk melakukan CRUD
         $this->load->model('Operator');
+        $this->load->model('Pengelola');
         $this->load->model('User');
         $this->load->model('Jabatan');
     }
@@ -29,7 +30,7 @@ class B_operator extends CI_Controller {
             echo json_encode(['errors' => $this->form_validation->error_array()]);
         }else{
             // cek jika id user kosong maka simpandata
-            if(!isset($_POST['id'])) {
+            if(!isset($id)) {
                 // lakukan insert data keladalam tabel user
                 $username = str_replace(' ', '',$_POST['nama']);
                 $password = password_hash(12345,PASSWORD_DEFAULT);
@@ -40,9 +41,10 @@ class B_operator extends CI_Controller {
                     'password_hash' => $password,
                     'level' => $level,
                 );
+
                 // kirim data kedalam model user
                 $id_user = $this->User->simpan($dataUser);
-
+                
                 if(!isset($_FILES['foto']['name']))
                 {
                     $filename = 'assets/src/images/user.png';

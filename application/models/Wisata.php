@@ -3,7 +3,7 @@ class Wisata extends CI_Model
 {
     public function getData()
     {
-        return $this->db->get('tb_wisata')->result();
+        return $this->db->query("SELECT * FROM tb_wisata a JOIN tb_operator b ON a.id_user = b.id_user")->result();
     }
 
     public function simpan($data)

@@ -84,6 +84,9 @@
 								<label for="">Objek Wisata</label>
 								<select name="id_objek" id="id_objek" class="form-control">
 									<option value="">-PILIH-</option>
+									<?php foreach($wisata as $a): ?>
+										<option value="<?= $a->id_wisata ?>"><?= $a->nama_wisata ?></option>
+									<?php endforeach ?>
 								</select>
 							</div>
 						</div>
