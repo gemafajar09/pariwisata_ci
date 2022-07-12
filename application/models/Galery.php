@@ -17,7 +17,7 @@ class Galery extends CI_Model {
     }
 
     public function getAll(){
-        return $this->db->query("SELECT * FROM tb_galery")->result();
+        return $this->db->query("SELECT * FROM tb_galery a JOIN tb_kategori b ON a.kategori = b.id_kategori")->result();
     }
 
         public function simpan($data)

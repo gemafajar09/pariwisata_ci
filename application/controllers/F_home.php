@@ -6,17 +6,23 @@ class F_home extends CI_Controller
     public function index()
     {
         $berita = $this->db->get('tb_berita')->result();
-        $this->template->f_template('frontend/page/home', ['data' => $berita]);
+        $galeri = $this->db->query('SELECT * FROM tb_galery limit 6')->result();
+        $this->template->f_template('frontend/page/home', ['data' => $berita, 'galeri' => $galeri]);
     }
 
     public function detail($id)
     {
         $berita = $this
             ->db
-            // ->select('id')
             ->where('id_berita', $id)
             ->get('tb_berita')
             ->result();
         $this->template->f_template('frontend/page/detail-berita', ['data' => $berita]);
+    }
+
+    public function detailGalery()
+    {
+        $galeri = $this->db->get('tb_galery')->result();
+        $this->template->f_template('frontend/page/detail-galery', ['data' => $galeri]);
     }
 }

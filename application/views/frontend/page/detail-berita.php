@@ -3,7 +3,7 @@
 
         <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
+            <li>Berita</li>
         </ol>
 
     </div>
