@@ -71,3 +71,4 @@ $route['kategori-del/(:num)']['get'] = 'B_kategori/delete/$1';
 // frontend
 $route['home']['get'] = 'F_home/index';
 $route['detail-berita/(:num)']['get'] = 'F_home/detail/$1';
+$route['detail-galery']['get'] = 'F_home/detailGalery';

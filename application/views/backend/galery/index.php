@@ -29,21 +29,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($galery as $i => $a): ?>
-					<tr>
-						<td><?= $a->id_galery ?></td>
-						<td><img src="<?= base_url($a->foto) ?>" width="130px" alt=""></td>
-						<td><?= $a->kategori ?></td>
-						<td><?= $a->deskripsi ?></td>
-						<td>
-							<button onclick="editData('<?= $a->id_galery ?>','<?= $a->foto ?>','<?= $a->kategori ?>','<?= $a->deskripsi ?>')"
-								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
-								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-							<button onclick="hapusData('<?= $a->id_galery ?>')"
-								style="border-radius:25px;background-color: #ea003a;color:white;width:50px"
-								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
-						</td>
-					</tr>
+					<?php foreach ($galery as $i => $a) : ?>
+						<tr>
+							<td><?= $a->id_galery ?></td>
+							<td><img src="<?= base_url($a->foto) ?>" width="130px" alt=""></td>
+							<td><?= $a->kategori ?></td>
+							<td><?= $a->deskripsi ?></td>
+							<td>
+								<button onclick="editData('<?= $a->id_galery ?>','<?= $a->foto ?>','<?= $a->kategori ?>','<?= $a->deskripsi ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
+								<button onclick="hapusData('<?= $a->id_galery ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
+							</td>
+						</tr>
 					<?php endforeach ?>
 				</tbody>
 			</table>
@@ -62,24 +58,24 @@
 			</div>
 			<form action="" method="post">
 				<div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Foto</label>
-                        <input type="file" class="form-control" onchange="tampilfoto()" id="foto" name="foto">
+					<div class="form-group">
+						<label for="">Foto</label>
+						<input type="file" class="form-control" onchange="tampilfoto()" id="foto" name="foto">
 						<div class="py-3 text-center" id="showGambar"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Kategori</label>
+						<select name="kategori" id="kategori" class="form-control">
 							<option value="">-PILIH-</option>
-							<?php foreach($kategori as $i => $a): ?>
+							<?php foreach ($kategori as $i => $a) : ?>
 								<option value="<?= $a->id_kategori ?>"><?= $a->kategori ?></option>
 							<?php endforeach ?>
 						</select>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
-                    </div>
+					</div>
+					<div class="form-group">
+						<label for="">Deskripsi</label>
+						<textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" onclick="simpandata()" class="btn btn-primary">Save changes</button>
@@ -92,12 +88,12 @@
 
 <script>
 	var base = '<?= base_url() ?>'
-	var idx,urlx,foto_lama;
+	var idx, urlx, foto_lama;
 
-    $('#addData').click(function(){
-        $('#judul').html('Tambah Galery')
-        $('#dataGalery').modal('show');
-    })
+	$('#addData').click(function() {
+		$('#judul').html('Tambah Galery')
+		$('#dataGalery').modal('show');
+	})
 
 	function simpandata() {
 		var form_data = new FormData();
@@ -108,6 +104,7 @@
 		var foto = $("#foto").prop("files")[0];
 
 		form_data.append("foto", foto);
+		form_data.append("kategori", kategori);
 		form_data.append("deskripsi", deskripsi);
 
 		if (idx != null) {
@@ -125,7 +122,7 @@
 			processData: false,
 			data: form_data,
 			type: 'post',
-			success: function (res) {
+			success: function(res) {
 				if (res.pesan) {
 					window.location.reload();
 				}
@@ -159,7 +156,7 @@
 						url: 'galery-del/' + id,
 						type: 'GET',
 						dataType: 'json',
-						success: function (res) {
+						success: function(res) {
 							if (res.pesan) {
 								window.location.reload();
 							}
@@ -190,7 +187,7 @@
 				//Image preview
 				if (fileInput.files && fileInput.files[0]) {
 					var reader = new FileReader();
-					reader.onload = function (e) {
+					reader.onload = function(e) {
 						document.getElementById('showGambar').innerHTML = '<img src="' + e.target.result +
 							'" width="120px"/>';
 					};

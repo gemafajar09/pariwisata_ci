@@ -80,29 +80,28 @@
 		</center>
 		<hr>
 		<div class="row">
-			<?php
-			for ($i = 0; $i < 8; $i++) :
-			?>
+			<?php foreach ($galeri as $isi) : ?>
 				<div class="col-md-4 p-3">
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-12">
-									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
+									<img src="<?= base_url() ?><?= $isi->foto  ?>" alt="" style="width:100%">
 								</div>
-								<div class="col-md-12">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus neque excepturi sequi inventore ut quaerat cum
+								<div class="col-md-12 mt-3">
+									<?= $isi->deskripsi  ?>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			<?php endfor ?>
+			<?php endforeach ?>
 		</div>
 	</div>
-
+	<div class="ml-5 mr-5 mt-3">
+		<a href="detail-galery/" style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;" type="button" class="btn btn-sm">Lihat Semua Galeri</a>
+	</div>
 </section>
-
 
 <section id="berita">
 	<div class="container mt-5">
@@ -123,11 +122,11 @@
 									<?= $isi->isi_berita ?>
 									<br>
 									<br>
-									<a href="detail-berita/<?= $isi->id_berita ?>" class="btn btn-sm btn-info ml-3" style="float:right">Selengkapnya</a>
+									<a href="detail-berita/<?= $isi->id_berita ?>" class="btn btn-sm btn-info ml-3" style="float:right">Selengkapnya >></a>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>+
 				</div>
 			<?php endforeach ?>
 		</div>
