@@ -56,7 +56,6 @@ $route['jabatan-add']['post'] = 'B_jabatan/simpan';
 $route['jabatan-add/(:num)']['post'] = 'B_jabatan/simpan/$1';
 $route['jabatan-del/(:num)']['get'] = 'B_jabatan/delete/$1';
 
-
 // Wisata
 $route['wisata']['get'] = 'B_wisata/index';
 $route['wisata-add']['post'] = 'B_wisata/simpan';
@@ -69,7 +68,6 @@ $route['kategori-add']['post'] = 'B_kategori/simpan';
 $route['kategori-add/(:num)']['post'] = 'B_kategori/simpan/$1';
 $route['kategori-del/(:num)']['get'] = 'B_kategori/delete/$1';
 
-
-
 // frontend
 $route['home']['get'] = 'F_home/index';
+$route['detail-berita/(:num)']['get'] = 'F_home/detail/$1';
