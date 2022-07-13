@@ -68,6 +68,12 @@ $route['kategori-add']['post'] = 'B_kategori/simpan';
 $route['kategori-add/(:num)']['post'] = 'B_kategori/simpan/$1';
 $route['kategori-del/(:num)']['get'] = 'B_kategori/delete/$1';
 
+// tiket
+$route['tiket']['get'] = 'B_tiket/index';
+$route['tiket-add']['post'] = 'B_tiket/simpan';
+$route['tiket-add/(:num)']['post'] = 'B_tiket/simpan/$1';
+$route['tiket-del/(:num)']['get'] = 'B_tiket/delete/$1';
+
 // frontend
 $route['home']['get'] = 'F_home/index';
 $route['detail-berita/(:num)']['get'] = 'F_home/detail/$1';

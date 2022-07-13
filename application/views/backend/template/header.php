@@ -21,7 +21,7 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="<?= base_url() ?><?= $_SESSION['foto'] ?>" alt="">
+							<img src="<?= base_url() ?><?= $_SESSION['foto'] ?>" alt="" width="52px" height="52px">
 						</span>
 						<span class="user-name"><?= $_SESSION['nama'] ?></span>
 					</a>

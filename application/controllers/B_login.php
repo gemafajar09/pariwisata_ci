@@ -53,6 +53,14 @@ class B_login extends CI_Controller {
                         'nama' => $users['nama'],
                         'foto' => $users['foto']
                         );
+                    }elseif($level == 4){
+                        $users = $this->db->query("SELECT * FROM tb_petugas WHERE id_user = '$id_user'")->row_array();
+                        $data = array(
+                        'id_user' => $user['id_user'],
+                        'level' => $user['level'],
+                        'nama' => $users['nama'],
+                        'foto' => $users['foto']
+                        );
                     }
                     $this->session->set_userdata($data);
                     redirect('dashboard');
