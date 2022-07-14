@@ -78,3 +78,7 @@ $route['tiket-del/(:num)']['get'] = 'B_tiket/delete/$1';
 $route['home']['get'] = 'F_home/index';
 $route['detail-berita/(:num)']['get'] = 'F_home/detail/$1';
 $route['detail-galery']['get'] = 'F_home/detailGalery';
+
+// pendapatan
+$route['pendapatan']['get'] = 'B_pendapatan/index';
+$route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
