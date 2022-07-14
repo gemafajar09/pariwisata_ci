@@ -9,7 +9,6 @@ class B_tiket extends CI_Controller
 
     public function index()
     {
-
         $wisata = $this
             ->db
             ->get('tb_wisata')
@@ -24,6 +23,8 @@ class B_tiket extends CI_Controller
         $rules = $this->Tiket->rules();
         $this->form_validation->set_rules($rules);
 
+        $date = date("Y-m-d");
+
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(['errors' => $this->form_validation->error_array()]);
         } else {
@@ -37,7 +38,8 @@ class B_tiket extends CI_Controller
                     'jumlah' => $_POST['jumlah_tiket'],
                     'total' => $_POST['total'],
                     'harga_parkir' => $_POST['harga_parkir'],
-                    'keterangan' => $_POST['keterangan']
+                    'keterangan' => $_POST['keterangan'],
+                    'dibuat' => $date
                 );
 
                 $simpan = $this->Tiket->simpan($data);
@@ -51,16 +53,17 @@ class B_tiket extends CI_Controller
                     'jumlah' => $_POST['jumlah_tiket'],
                     'total' => $_POST['total'],
                     'harga_parkir' => $_POST['harga_parkir'],
-                    'keterangan' => $_POST['keterangan']
+                    'keterangan' => $_POST['keterangan'],
+                    'dibuat' => $date
                 );
-
                 $edit = $this->Tiket->update($data, $id);
                 echo json_encode(['pesan' => $edit]);
             }
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $hapus = $this->Tiket->delete($id);
         echo json_encode(['pesan' => $hapus]);
     }

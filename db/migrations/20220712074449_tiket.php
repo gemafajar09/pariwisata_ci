@@ -28,6 +28,7 @@ final class Tiket extends AbstractMigration
             ->addColumn('total', 'integer')
             ->addColumn('harga_parkir', 'integer')
             ->addColumn('keterangan', 'text')
+            ->addColumn('dibuat', 'date')
             ->create();
     }
 }
