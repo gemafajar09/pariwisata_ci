@@ -107,7 +107,6 @@
 	<div class="container mt-5">
 		<center>
 			<h2>Berita</h2>
-			<?php var_dump(date_default_timezone_set("Asia/Bangkok")) ?>
 		</center>
 		<hr>
 		<div class="row">

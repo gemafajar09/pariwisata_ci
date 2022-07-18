@@ -38,10 +38,10 @@
 						<td><?= $a->lng ?></td>
 						<td><?= $a->nama_wisata ?></td>
 						<td>
-							<button onclick="editData()"
+							<button onclick="editData('<?= $a->id_peta ?>','<?= $a->lat ?>','<?= $a->lng ?>','<?= $a->id_wisata ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-							<button onclick="hapusData()"
+							<button onclick="hapusData('<?= $a->id_peta ?>')"
 								style="border-radius:25px;background-color: #ea003a;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 						</td>
@@ -102,7 +102,7 @@
 </div>
 
 <script>
-	var idx,urlx;
+	var idx, urlx;
 
     $('#addData').click(function(){
         $('#judul').html('Tambah Data')
@@ -128,6 +128,7 @@
         if(idx != null){
             urlx = 'peta-add/' + idx;
         }
+
         alert(urlx)
 		var lat = $('#lat').val()
         var lng = $('#lng').val()
