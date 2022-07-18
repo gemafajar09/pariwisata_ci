@@ -80,10 +80,108 @@
 </div>
 
 <div class="modal" tabindex="-1" id="register-petugas" role="dialog">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-xl" role="document">
 		<div class="modal-content">
+			<div class="modal-header">
+				Daftar Petugas Wisata
+			</div>
 			<div class="modal-body">
-				<p>Modal body text goes here.</p>
+				<form action="" method="post">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="">Nama</label>
+								<input type="text" class="form-control" placeholder="" name="nama">
+							</div>
+							
+							<div class="form-group">
+								<label for="">NIk</label>
+								<input type="number" class="form-control" placeholder="" name="nik">
+							</div>
+							
+							<div class="form-group">
+								<label for="">KK</label>
+								<input type="file" class="form-control" placeholder="" name="kk">
+							</div>
+							<div class="form-group">
+								<label for="">Foto</label>
+								<input type="file" class="form-control" placeholder="" name="foto">
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="">Tgl Lahir</label>
+								<input type="date" class="form-control" placeholder="" name="tgl_lahir">
+							</div>
+							<div class="form-group">
+								<label for="">Jenis Kelamin</label>
+								<select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+									<option value="">-PILIH-</option>
+									<option value="Laki-Laki">Laki-Laki</option>
+									<option value="Perempuan">Perempuan</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="">No. Hp</label>
+								<input type="number" class="form-control" placeholder="" name="nohp">
+							</div>
+							<div class="form-group">
+								<label for="">Objek WIsata</label>
+								<select name="objek_wisata" id="objek_wisata" class="form-control">
+									<option value="">-PILIH-</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="">Jabatan</label>
+								<select name="jabatan" id="jabatan" class="form-control">
+									<option value="">-PILIH-</option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<label for="">Agama</label>
+								<select name="agama" id="agama" class="form-control">
+									<option value="">-PILIH-</option>
+									<option value="Islam">Islam</option>
+									<option value="Kristen">Kristen</option>
+									<option value="Katolik">Katolik</option>
+									<option value="Hindu">Hindu</option>
+									<option value="Buddha">Buddha</option>
+									<option value="Konghucu">Konghucu</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="">Pendidikan</label>
+								<select name="pendidikan" id="pendidikan" class="form-control">
+									<option value="">-PILIH-</option>
+									<option value="SD">SD</option>
+									<option value="SMP">SMP</option>
+									<option value="SMA">SMA</option>
+									<option value="Sarjana">Sarjana</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="">Ijazah</label>
+								<input type="file" class="form-control" placeholder="" name="ijazah">
+							</div>
+							
+						</div>
+
+						<div class="col-md-8">
+							<div class="form-group">
+								<label for="">Alamat</label>
+								<textarea name="alamat" class="form-control"></textarea>
+							</div>
+						</div>
+						<div class="co-md-4">
+							<button type="submit" class="btn btn-primary mt-5" style="width:300px">Simpan</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
