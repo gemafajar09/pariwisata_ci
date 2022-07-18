@@ -140,8 +140,8 @@
 		<hr>
 		<div class="row">
 			<?php 
-			if($data != null) :
-			foreach ($data as $isi) : ?>
+			if($berita != null) :
+			foreach ($berita as $isi) : ?>
 			<div class="col-md-6 p-3">
 				<div class="card">
 					<div class="card-body">
