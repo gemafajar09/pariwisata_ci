@@ -62,7 +62,7 @@
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus non aperiam consectetur illum obcaecati, quos officia cupiditate tempora facere unde temporibus tempore! Cupiditate corrupti reiciendis a modi odio error!
 									<br>
 									<br>
-									<a href="" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>
+									<a href="<?= base_url('detail-wisata/'.$v->id_wisata) ?>" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>
 									<a href="https://www.google.com/maps/@<?= $v->lat ?>,<?= $v->lng ?>z " class="btn btn-sm btn-info ml-3" style="float:right" target="_blank">Lihat Rute</a>
 								</div>
 							</div>
