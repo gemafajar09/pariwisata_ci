@@ -48,7 +48,7 @@
 		<hr>
 		<div class="row">
 			<?php
-			for ($i = 0; $i < 8; $i++) :
+			foreach ($pariwisata as $v) :
 			?>
 				<div class="col-md-6 p-3">
 					<div class="card">
@@ -58,17 +58,18 @@
 									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
 								</div>
 								<div class="col-md-8">
+									<h3><?= $v->nama_wisata ?></h3>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus non aperiam consectetur illum obcaecati, quos officia cupiditate tempora facere unde temporibus tempore! Cupiditate corrupti reiciendis a modi odio error!
 									<br>
 									<br>
 									<a href="" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>
-									<a href="" class="btn btn-sm btn-info ml-3" style="float:right">Lihat Rute</a>
+									<a href="https://www.google.com/maps/@<?= $v->lat ?>,<?= $v->lng ?>z " class="btn btn-sm btn-info ml-3" style="float:right" target="_blank">Lihat Rute</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			<?php endfor ?>
+			<?php endforeach ?>
 		</div>
 	</div>
 </section>
@@ -107,7 +108,6 @@
 	<div class="container mt-5">
 		<center>
 			<h2>Berita</h2>
-			<?php var_dump(date_default_timezone_set("Asia/Bangkok")) ?>
 		</center>
 		<hr>
 		<div class="row">
