@@ -99,8 +99,10 @@
 			<?php endforeach ?>
 		</div>
 	</div>
-	<div class="ml-5 mr-5 mt-3">
-		<a href="detail-galery/" style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;" type="button" class="btn btn-sm">Lihat Semua Galeri</a>
+	<div class="container">
+		<div class="ml-5 mr-5 mt-3">
+			<a href="detail-galery/" style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;" type="button" class="btn btn-sm">Lihat Semua Galeri</a>
+		</div>
 	</div>
 </section>
 
