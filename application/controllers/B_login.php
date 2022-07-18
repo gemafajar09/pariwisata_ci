@@ -81,6 +81,7 @@ class B_login extends CI_Controller {
     public function logout()
     {
         $this->session->unset_userdata('id_user');
+        session_destroy();
         $this->session->set_flashdata(['pesan' => 'Anda Telah Keluar.','type' => 'success']);
         redirect('home');
     }

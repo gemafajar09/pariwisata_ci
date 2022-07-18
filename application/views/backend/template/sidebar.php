@@ -143,7 +143,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('testimoni') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-chat"></span><span class="mtext">Testimoni</span>
 							</a>
 						</li>
