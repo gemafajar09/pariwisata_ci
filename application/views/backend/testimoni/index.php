@@ -22,93 +22,49 @@
 				<thead>
 					<tr>
 						<th style="width:10%">No</th>
-						<th>Foto</th>
-						<th>Lat</th>
-						<th>Lng</th>
-						<th>Objek Wisata</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Komentar</th>
+						<th>Tanggal</th>
+						<th>Status</th>
 						<th style="width:20%"></th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach($testimoni as $i => $isi): ?>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><?= $i+1 ?></td>
+						<td><?= $isi->nama ?></td>
+						<td><?= $isi->email ?></td>
+						<td><?= $isi->komentar ?></td>
+						<td><?= $isi->tanggal ?></td>
+						<td><?= $isi->status == 0 ? 'Tidak Ditampilkan' : 'Ditampilkan' ?></td>
 						<td>
-							<button onclick="editData()"
+							<button onclick="lockData('<?= $isi->id_testimoni ?>','<?= $isi->status ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
-								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-							<button onclick="hapusData()"
+								type="button" class="btn btn-sm"><i class="fa fa-<?= $isi->status == 0 ? 'lock' : 'unlock' ?>"></i></button>
+							<button onclick="hapusData('<?= $isi->id_testimoni ?>')"
 								style="border-radius:25px;background-color: #ea003a;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 						</td>
 					</tr>
+					<?php endforeach ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
 
-<div class="modal" id="dataJabatan" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content" style="border-radius:15px">
-			<div class="modal-header">
-				<h5 class="modal-title" id="judul"></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form action="" method="post">
-				<div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Jabatan</label>
-                        <input type="text" class="form-control" placeholder="jabatan" id="jabatan" name="jabatan"
-                            required>
-                    </div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" onclick="simpandata()" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
 <script>
-	var idx,urlx;
 
-    $('#addData').click(function(){
-        $('#judul').html('Tambah Jabatan')
-        $('#dataJabatan').modal('show');
-    })
-
-	// function untuk tampilkan modal untuk tambah data
-	function editData(id,jabatan) {
-		idx = id
-		// set judul pada title modal
-		$('#judul').html("Edit Jabatan")
-        $('#jabatan').val(jabatan)
-		// perintah membuka modal
-		$('#dataJabatan').modal('show')
-	}
-
-	function simpandata()
+	function lockData(id, status)
 	{
-        urlx = 'jabatan-add'
 
-        if(idx != null){
-            urlx = 'jabatan-add/' + idx;
-        }
-        alert(urlx)
-		var jabatan = $('#jabatan').val()
         $.ajax({
-            url: urlx,
+            url: 'testimoni-lock/'+id,
             type: 'POST',
             dataType: 'JSON',
-            data: {jabatan: jabatan},
+            data: {status: status},
             success: function (res) {
                 if(res.pesan){
                     window.location.reload();
@@ -128,7 +84,7 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'jabatan-del/' + id,
+						url: 'testimoni-del/' + id,
 						type: 'GET',
 						dataType: 'json',
 						success: function (res) {

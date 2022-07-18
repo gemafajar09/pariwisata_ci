@@ -43,6 +43,11 @@ $route['peta-add']['post'] = 'B_peta/simpan';
 $route['peta-add/(:num)']['post'] = 'B_peta/simpan/$1';
 $route['peta-del/(:num)']['get'] = 'B_peta/delete/$1';
 
+// testimoni
+$route['testimoni']['get'] = 'B_testimoni/index';
+$route['testimoni-del/(:num)']['get'] = 'B_testimoni/delete/$1';
+$route['testimoni-lock/(:num)']['post'] = 'B_testimoni/update/$1';
+
 // Berita
 $route['berita']['get'] = 'B_berita/index';
 $route['tambah-berita']['get'] = 'B_berita/tambahBerita';
@@ -83,3 +88,7 @@ $route['detail-galery']['get'] = 'F_home/detailGalery';
 // pendapatan
 $route['pendapatan']['get'] = 'B_pendapatan/index';
 $route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
+
+// testimonial
+$route['testimoni-add']['post'] = 'F_testimonial/simpan';
+
