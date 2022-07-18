@@ -81,6 +81,7 @@ $route['tiket-del/(:num)']['get'] = 'B_tiket/delete/$1';
 
 // frontend
 $route['home']['get'] = 'F_home/index';
+$route['detail-wisata/(:num)']['get'] = 'F_home/detailWisata/$1';
 $route['detail-berita/(:num)']['get'] = 'F_home/detail/$1';
 $route['detail-galery']['get'] = 'F_home/detailGalery';
 
@@ -90,3 +91,4 @@ $route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
 
 // testimonial
 $route['testimoni-add']['post'] = 'F_testimonial/simpan';
+

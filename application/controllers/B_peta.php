@@ -21,7 +21,7 @@ class B_peta extends CI_Controller {
         if($id == null) {
             $simpan = $this->Peta->simpan($data);
         }else{
-            $simpan = $this->Peta->update($id,$data);
+            $simpan = $this->Peta->update($data, $id);
         }
         echo json_encode(['pesan' => $simpan]);
     }

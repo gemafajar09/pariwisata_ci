@@ -92,7 +92,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label for="">NIk</label>
+								<label for="">NIK</label>
 								<input type="number" class="form-control" placeholder="" name="nik">
 							</div>
 							
