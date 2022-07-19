@@ -89,6 +89,9 @@ $route['detail-galery']['get'] = 'F_home/detailGalery';
 $route['pendapatan']['get'] = 'B_pendapatan/index';
 $route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
 
+// register
+$route['register-petugas']['post'] = 'F_register/simpan';
+
 // testimonial
 $route['testimoni-add']['post'] = 'F_testimonial/simpan';
 
