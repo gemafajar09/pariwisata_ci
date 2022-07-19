@@ -53,6 +53,7 @@
 		<hr>
 		<div class="row">
 			<?php
+			if($pariwisata != null):
 			foreach ($pariwisata as $v) :
 			?>
 
@@ -65,18 +66,27 @@
 								</div>
 								<div class="col-md-8">
 									<h3><?= $v->nama_wisata ?></h3>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus non aperiam consectetur illum obcaecati, quos officia cupiditate tempora facere unde temporibus tempore! Cupiditate corrupti reiciendis a modi odio error!
+									<?= substr($v->pusat_informasi,0,250) ?> ....
 									<br>
 									<br>
 									<a href="<?= base_url('detail-wisata/'.$v->id_wisata) ?>" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>
-									<a href="https://www.google.com/maps/@<?= $v->lat ?>,<?= $v->lng ?>z " class="btn btn-sm btn-info ml-3" style="float:right" target="_blank">Lihat Rute</a>
+									<!-- <a href="https://www.google.com/maps/@<?= $v->lat ?>,<?= $v->lng ?>z " class="btn btn-sm btn-info ml-3" style="float:right" target="_blank">Lihat Rute</a> -->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-			<?php endforeach ?>
+			<?php 
+			endforeach;
+			else :
+			?>
+			<center class="mx-auto">
+				<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_qyb2cbhe.json"
+					background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+				</lottie-player>
+			</center>
+			<?php endif ?>
 
 		</div>
 	</div>
@@ -123,11 +133,6 @@
 				</lottie-player>
 			</center>
 			<?php endif ?>
-		</div>
-	</div>
-	<div class="container">
-		<div class="ml-5 mr-5 mt-3">
-			<a href="detail-galery/" style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;" type="button" class="btn btn-sm">Lihat Semua Galeri</a>
 		</div>
 	</div>
 </section>

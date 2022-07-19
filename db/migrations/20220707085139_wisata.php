@@ -22,6 +22,7 @@ final class Wisata extends AbstractMigration
 
         $wisata->addColumn('id_user', 'integer')
             ->addColumn('nama_wisata', 'string', ['limit' => 255])
+            ->addColumn('foto_wisata', 'text')
             ->addColumn('alamat', 'text')
             ->addColumn('pusat_informasi','text')
             ->addColumn('p3k','text')

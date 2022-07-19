@@ -10,7 +10,7 @@ class B_wisata extends CI_Controller
 
     public function index()
     {
-        $data['wisata'] = $this->Wisata->getData();
+        $data['wisata'] = $this->Wisata->getwisata();
         $this->template->b_template('backend/wisata/index', $data);
     }
 
@@ -26,14 +26,16 @@ class B_wisata extends CI_Controller
             echo json_encode(['errors' => $this->form_validation->error_array()]);
         } else {
             if (!isset($id)) {
-                $foto_p3k = fileUpload($_FILES['p3k'], 'assets/upload/wisata/');
-                $foto_mushola = fileUpload($_FILES['mushola'], 'assets/upload/wisata/');
-                $foto_parkir = fileUpload($_FILES['tempat_parkir'], 'assets/upload/wisata/');
-                $foto_wc = fileUpload($_FILES['wc'], 'assets/upload/wisata/');
+                $foto_p3k = isset($_FILES['p3k']) ? fileUpload($_FILES['p3k'], 'assets/upload/wisata/') : 'default.png';
+                $foto_mushola = isset($_FILES['mushola']) ? fileUpload($_FILES['mushola'], 'assets/upload/wisata/') : 'default.png';
+                $foto_parkir = isset($_FILES['tempat_parkir']) ? fileUpload($_FILES['tempat_parkir'], 'assets/upload/wisata/'): 'default.png';
+                $foto_wc = isset($_FILES['wc']) ? fileUpload($_FILES['wc'], 'assets/upload/wisata/') : 'default.png';
+                $foto_wisata = isset($_FILES['foto_wisata']) ? fileUpload($_FILES['foto_wisata'], 'assets/upload/wisata/') : 'default.png';
 
                 $data = array(
                     'id_user' => $id_user,
                     'nama_wisata' => $_POST['nama_wisata'],
+                    'foto_wisata' => $foto_wisata,
                     'alamat' => $_POST['alamat'],
                     'pusat_informasi' => $_POST['pusat_informasi'],
                     'p3k' =>  $foto_p3k,

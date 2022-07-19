@@ -22,7 +22,7 @@
 				<thead>
 					<tr>
 						<th style="width:10%">No</th>
-						<th>Nama Pengelola</th>
+						<!-- <th>Nama Pengelola</th> -->
 						<th>Nama Wisata</th>
 						<th>Alamat</th>
 						<th>Pusat Info</th>
@@ -40,10 +40,10 @@
 					<?php foreach ($wisata as $i => $isi) : ?>
 						<tr>
 							<td><?= $i + 1 ?></td>
-							<td><?= $isi->nama ?></td>
+							<!-- <td><?= $isi->nama ?></td> -->
 							<td><?= $isi->nama_wisata ?></td>
 							<td><?= $isi->alamat ?></td>
-							<td><?= $isi->pusat_informasi ?></td>
+							<td><?= substr($isi->pusat_informasi,0,50) ?></td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->p3k) ?>" width="130px" alt="">
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->mushola) ?>" width="130px" alt="">
 							<td><?= $isi->luas_mushola ?> m<sup>2</sup< /td>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="modal" id="dataWisata" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog modal-xl" role="document">
 		<div class="modal-content" style="border-radius:15px">
 			<div class="modal-header">
 				<h5 class="modal-title" id="judul"></h5>
@@ -82,7 +82,7 @@
 							</div>
 							<div class="form-group">
 								<label for="">Pusat Informasi</label>
-								<input type="text" class="form-control" placeholder="Pusat Informasi" id="pusat_informasi" name="pusat_informasi" required>
+								<textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="pusat_informasi" name="pusat_informasi"></textarea>
 							</div>
 							<div class="form-group">
 								<label for="">Mushola</label>
@@ -96,17 +96,18 @@
 								<div class="py-3 text-center" id="showGambarParkir">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="">WC</label>
-								<input type="file" class="form-control" onchange="tampilfotowc()" id="wc" name="wc">
-								<div class="py-3 text-center" id="showGambarWc">
-								</div>
-							</div>
+							
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="">Alamat</label>
 								<input type="text" class="form-control" placeholder="Alamat" id="alamat" name="alamat" required>
+							</div>
+							<div class="form-group">
+								<label for="">Foto Wisata</label>
+								<input type="file" class="form-control" onchange="tampilfotoWisata()" id="foto_wisata" name="foto_wisata">
+								<div class="py-3 text-center" id="showGambarWisata">
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="">P3K</label>
@@ -121,6 +122,12 @@
 							<div class="form-group">
 								<label for="">Luas Tempat Parkir (m<sup>2</sup>)</label>
 								<input type="number" class="form-control" placeholder="Ex: 900" id="luas_tempat_parkir" name="luas_tempat_parkir" required>
+							</div>
+							<div class="form-group">
+								<label for="">WC</label>
+								<input type="file" class="form-control" onchange="tampilfotowc()" id="wc" name="wc">
+								<div class="py-3 text-center" id="showGambarWc">
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="">Jumlah WC</label>
@@ -160,9 +167,11 @@
 		var tempat_parkir = $("#tempat_parkir").prop("files")[0];
 		var mushola = $("#mushola").prop("files")[0];
 		var p3k = $("#p3k").prop("files")[0];
+		var foro_wisata = $("#foto_wisata").prop("files")[0];
 		var wc = $("#wc").prop("files")[0];
 
 		form_data.append("nama_wisata", nama_wisata);
+		form_data.append("foto_wisata", foto_wisata);
 		form_data.append("pusat_informasi", pusat_informasi);
 		form_data.append("alamat", alamat);
 		form_data.append("jumlah_wc", jumlah_wc);
@@ -220,6 +229,8 @@
 			'" width="120px"/>';
 		document.getElementById('showGambarWc').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + wc +
 			'" width="120px"/>';
+		document.getElementById('showGambarWisata').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + foto_wisata +
+			'" width="120px"/>';
 
 		$('#judul').html("Edit Data")
 		$('#dataWisata').modal('show')
@@ -272,6 +283,34 @@
 					var reader = new FileReader();
 					reader.onload = function(e) {
 						document.getElementById('showGambarP3K').innerHTML = '<img src="' + e.target.result +
+							'" width="120px"/>';
+					};
+					reader.readAsDataURL(fileInput.files[0]);
+				}
+			}
+		}
+	}
+
+	function tampilfotoWisata() {
+		var fileInput = document.getElementById('foto_wisata');
+		var filePath = fileInput.value;
+		var extensions = /(\.jpg|\.png)$/i;
+		var ukuran = fileInput.files[0].size;
+		if (ukuran > 1000000) {
+			alert('ukuran terlalu besar. Maksimal 1000KB')
+			fileInput.value = '';
+			return false;
+		} else {
+			if (!extensions.exec(filePath)) {
+				alert('Silakan unggah file yang memiliki ekstensi .jpg/.png.');
+				fileInput.value = '';
+				return false;
+			} else {
+				//Image preview
+				if (fileInput.files && fileInput.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						document.getElementById('showGambarWisata').innerHTML = '<img src="' + e.target.result +
 							'" width="120px"/>';
 					};
 					reader.readAsDataURL(fileInput.files[0]);
