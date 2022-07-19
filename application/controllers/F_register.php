@@ -32,7 +32,8 @@ class F_register extends CI_Controller
             );
 
             // data user logiknya masih error
-            $get_id_user = $this->db->select('id_user')->order_by('id_user', "desc")->limit(1)->get('tb_user')->row();
+            $id_user = $this->User->simpan($data_user);
+
 
             // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder petugas
             $name_foto = fileUpload($_FILES['foto'], 'assets/upload/petugas/');
@@ -56,14 +57,14 @@ class F_register extends CI_Controller
                 'kk' => $name_kk,
                 'agama' => $_POST['agama'],
                 'pendidikan' => $_POST['pendidikan'],
-                'id_user' => $get_id_user->id_user,
+                'id_user' => $id_user,
                 'id_wisata' => $_POST['objek_wisata'],
             );
 
             $simpan_petugas = $this->Petugas->simpan($data_petugas);
-            $simpan_user = $this->User->simpan($data_user);
+            
 
-            echo json_encode(['pesan' => $simpan_petugas, 'user' => $simpan_user]);
+            echo json_encode(['pesan' => $simpan_petugas, 'user' => $id_user]);
         }
     }
 }
