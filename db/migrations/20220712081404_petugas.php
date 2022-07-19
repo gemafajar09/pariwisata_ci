@@ -21,6 +21,7 @@ final class Petugas extends AbstractMigration
         $petugas = $this->table('tb_petugas', array('id' => 'id_petugas'));
 
         $petugas->addColumn('nama', 'string')
+            ->addColumn('nik', 'integer')
             ->addColumn('jabatan', 'integer')
             ->addColumn('foto', 'text')
             ->addColumn('alamat', 'text')
@@ -28,7 +29,6 @@ final class Petugas extends AbstractMigration
             ->addColumn('ijazah', 'text')
             ->addColumn('jenis_kelamin', 'string')
             ->addColumn('no_hp', 'string')
-            ->addColumn('ktp', 'string')
             ->addColumn('kk', 'string')
             ->addColumn('agama', 'string')
             ->addColumn('pendidikan', 'string')
