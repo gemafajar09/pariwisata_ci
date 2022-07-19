@@ -41,9 +41,6 @@ $wisata = $this
 				<a class="nav-link" href="#testimoni">Testimoni</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#faq">Faq</a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link" role="button" onclick="loginx()" href="#">Login</a>
 			</li>
 			<li class="nav-item dropdown">

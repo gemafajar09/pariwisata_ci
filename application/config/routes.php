@@ -43,6 +43,11 @@ $route['peta-add']['post'] = 'B_peta/simpan';
 $route['peta-add/(:num)']['post'] = 'B_peta/simpan/$1';
 $route['peta-del/(:num)']['get'] = 'B_peta/delete/$1';
 
+// testimoni
+$route['testimoni']['get'] = 'B_testimoni/index';
+$route['testimoni-del/(:num)']['get'] = 'B_testimoni/delete/$1';
+$route['testimoni-lock/(:num)']['post'] = 'B_testimoni/update/$1';
+
 // Berita
 $route['berita']['get'] = 'B_berita/index';
 $route['tambah-berita']['get'] = 'B_berita/tambahBerita';
@@ -86,3 +91,7 @@ $route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
 
 // register
 $route['register-petugas']['post'] = 'F_register/simpan';
+
+// testimonial
+$route['testimoni-add']['post'] = 'F_testimonial/simpan';
+
