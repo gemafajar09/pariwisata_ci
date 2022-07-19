@@ -95,3 +95,9 @@ $route['register-petugas']['post'] = 'F_register/simpan';
 // testimonial
 $route['testimoni-add']['post'] = 'F_testimonial/simpan';
 
+// upload surat rekomendasi
+$route['surat']['get'] = 'B_surat/index';
+$route['surat-add']['post'] = 'B_surat/simpan';
+$route['surat-download/(:num)']['get'] = 'B_surat/download/$1';
+$route['surat-del/(:num)']['get'] = 'B_surat/delete/$1';
+
