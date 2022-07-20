@@ -118,6 +118,11 @@
 								<span class="micon dw dw-file"></span><span class="mtext">Jabatan</span>
 							</a>
 						</li>
+						<li class="dropdown">
+							<a href="<?= base_url('banner') ?>" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-image"></span><span class="mtext">Banner</span>
+							</a>
+						</li>
 					<?php endif ?>
 
 					<!-- operator dinas -->

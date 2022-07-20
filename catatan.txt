@@ -8,7 +8,7 @@ selanjutnya lakukan perintah initsialisai phinx
 php vendor/bin/phinx init
 
 selnjutnya perintah untuk membuat sebuah migrasi database
-vendor/bin/phinx create "Nama file migrasi sesuai tabel yang ingin dibuat"
+php vendor/bin/phinx create "Nama file migrasi sesuai tabel yang ingin dibuat"
 
 perintah untuk migrasi ke database
 phinx migrate -e development
