@@ -55,18 +55,18 @@
 			<?php
 			if($pariwisata != null):
 			foreach ($pariwisata as $v) :
-			?>
+		?>
 
 				<div class="col-md-6 p-3">
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-4">
-									<img src="<?= base_url() ?>assets/src/images/priwisata1.png" alt="" style="width:100%">
+								<div class="col-md-5">
+									<img src="<?= base_url() ?>assets/upload/wisata/<?= $v->foto_wisata ?>" alt="" style="width:100%; height:100%">
 								</div>
-								<div class="col-md-8">
+								<div class="col-md-7">
 									<h3><?= $v->nama_wisata ?></h3>
-									<?= substr($v->pusat_informasi,0,250) ?> ....
+									<?= substr($v->pusat_informasi,0,200) ?> ....
 									<br>
 									<br>
 									<a href="<?= base_url('detail-wisata/'.$v->id_wisata) ?>" class="btn btn-sm btn-success ml-3" style="float:right">Lihat Detail</a>

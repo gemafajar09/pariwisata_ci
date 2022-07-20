@@ -20,8 +20,7 @@ final class Peta extends AbstractMigration
     {
         $peta = $this->table('tb_peta', array('id' => 'id_peta'));
 
-        $peta->addColumn('lat', 'string')
-            ->addColumn('lng', 'string')
+        $peta->addColumn('url', 'text')
             ->addColumn('id_wisata', 'integer')
             ->create();
     }

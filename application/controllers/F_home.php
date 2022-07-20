@@ -32,7 +32,7 @@ class F_home extends CI_Controller
 
 	public function detailWisata($id)
 	{
-		$data['wisata'] = $this->db->query("SELECT * FROM tb_wisata WHERE id_wisata = $id")->row_array();
+		$data['wisata'] = $this->db->query("SELECT * FROM tb_wisata a left join tb_peta b on a.id_wisata=b.id_wisata WHERE a.id_wisata = $id")->row_array();
         $this->template->f_template('frontend/page/detail-wisata', $data);
 	}
 }

@@ -8,14 +8,13 @@ class B_peta extends CI_Controller {
 
     public function index() {
         $data['peta'] = $this->Peta->getAll();
-        $data['wisata'] = $this->Wisata->getData();
+        $data['wisata'] = $this->Wisata->getwisata();
         $this->template->b_template('backend/peta/index',$data);
     }
 
     public function simpan($id = null) {
         $data = array(
-            'lat' => $_POST['lat'],
-            'lng' => $_POST['lng'],
+            'url' => $_POST['url'],
             'id_wisata' => $_POST['id_objek'],
         );
         if($id == null) {
