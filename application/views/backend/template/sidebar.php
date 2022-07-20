@@ -167,44 +167,44 @@
 					<!-- pengelola wisata -->
 					<?php if($_SESSION['level'] == 3): ?>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('pendapatan') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-money"></span><span class="mtext">Pendapatan Wisata</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('formulir-petugas') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-file"></span><span class="mtext">Formulir Pendaftaran</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('petugas') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user"></span><span class="mtext">Data Petugas Wisata</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('jabatan') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-file"></span><span class="mtext">Jabatan</span>
 							</a>
 						</li>
-						<li class="dropdown">
+						<!-- <li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user"></span><span class="mtext">Seleksi Calon Petugas</span>
 							</a>
-						</li>
+						</li> -->
 					<?php endif ?>
 
 					<!-- petugas wisata -->
 					<?php if($_SESSION['level'] == 4): ?>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('tiket') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Daftar Tiket Wisata</span>
 							</a>
 						</li>
-						<li class="dropdown">
+						<!-- <li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Detail Profile</span>
 							</a>
-						</li>
+						</li> -->
 					<?php endif ?>
 
 					<!-- calon petugas -->

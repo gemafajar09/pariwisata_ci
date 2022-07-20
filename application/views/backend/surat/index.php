@@ -31,8 +31,8 @@
 					<tr>
 						<th>No</th>
 						<th>Surat Rekomendasi</th>
+						<th>Wisata</th>
 						<th>Aksi</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,6 +40,7 @@
 						<tr>
 							<td><?= $i + 1 ?></td>
 							<td><?= $isi->surat ?></td>
+							<td><?= $isi->nama_wisata ?></td>
 							<td>
 								<a style="border-radius:25px;background-color: #51a822;color:white;width:50px" type="button" class="btn btn-sm" href="<?php echo base_url() . 'surat-download/' . $isi->id_surat ?>"><i class="fa fa-download"></i></a>
 								<button onclick="hapusData('<?= $isi->id_surat ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>

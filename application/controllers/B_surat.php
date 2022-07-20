@@ -10,8 +10,9 @@ class B_surat extends CI_Controller
 
     public function index()
     {
-        $data['surat'] = $this->Surat->getAll();
+        // $data['surat'] = $this->Surat->getAll();
         $data['wisata'] = $this->Wisata->getData();
+        $data['surat'] = $this->db->query('SELECT * FROM tb_surat a JOIN tb_wisata b on a.id_wisata = b.id_wisata')->result();
         $this->template->b_template('backend/surat/index', $data);
     }
 

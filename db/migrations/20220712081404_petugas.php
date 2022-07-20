@@ -34,6 +34,7 @@ final class Petugas extends AbstractMigration
             ->addColumn('pendidikan', 'string')
             ->addColumn('id_user', 'integer')
             ->addColumn('id_wisata', 'integer')
+            ->addColumn('status', 'integer')
             ->create();
     }
 }
