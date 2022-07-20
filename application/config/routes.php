@@ -89,6 +89,16 @@ $route['detail-galery']['get'] = 'F_home/detailGalery';
 $route['pendapatan']['get'] = 'B_pendapatan/index';
 $route['cari-pendapatan/(:num)/(:any)']['get'] = 'B_pendapatan/cari/$1/$2';
 
+// formulir petugas
+$route['formulir-petugas']['get'] = 'B_petugas/index';
+$route['formulir-petugas-up/(:num)']['get'] = 'B_petugas/unlock/$1';
+$route['formulir-petugas-del/(:num)']['get'] = 'B_petugas/delete/$1';
+
+// petugas
+$route['petugas']['get'] = 'B_petugas/petugas';
+$route['petugas-up/(:num)']['get'] = 'B_petugas/unlock/$1';
+$route['petugas-del/(:num)']['get'] = 'B_petugas/delete/$1';
+
 // register
 $route['register-petugas']['post'] = 'F_register/simpan';
 

@@ -32,4 +32,8 @@
     {
         $('#register-petugas').modal('show');
     }
+    function registerw()
+    {
+        $('#register-wisatawan').modal('show');
+    }
 </script>

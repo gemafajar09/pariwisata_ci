@@ -46,7 +46,7 @@ $wisata = $this
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button" href="#">Register</a>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Wisatawan</a>
+					<a class="dropdown-item" role="button" onclick="registerw()" href="#">Wisatawan</a>
 					<a class="dropdown-item" role="button" onclick="registerx()" href="#">Petugas Wisata</a>
 				</div>
 			</li>
@@ -54,6 +54,8 @@ $wisata = $this
 	</div>
 </nav>
 
+
+<!-- Modal Login -->
 <div class="modal" tabindex="-1" id="logins" role="dialog">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content" style="border-radius:15px">
@@ -80,6 +82,34 @@ $wisata = $this
 	</div>
 </div>
 
+<!-- Modal Register Wisatawan -->
+<div class="modal" tabindex="-1" id="register-wisatawan" role="dialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content" style="border-radius:15px">
+			<div class="modal-body">
+				<form action="<?= base_url('login_admin') ?>" method="post">
+					<center>
+						Login
+					</center>
+					<hr>
+					<div class="form-group">
+						<label for="">Username</label>
+						<input type="text" class="form-control" placeholder="Username" name="username" id="username" required autocomplete="off">
+					</div>
+					<div class="form-group">
+						<label for="">Password</label>
+						<input type="password" class="form-control" placeholder="********" name="password" id="password" required autocomplete="off">
+					</div>
+					<div align="right">
+						<button style="width:40%" type="submit" class="btn btn-primary btn-sm">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Register Petugas Wisata -->
 <div class="modal" tabindex="-1" id="register-petugas" role="dialog">
 	<div class="modal-dialog modal-xl" role="document">
 		<div class="modal-content">
@@ -200,6 +230,9 @@ $wisata = $this
 </div>
 
 <script>
+	function simpanWisata() {
+	}
+
 	function simpanData() {
 		var form_data = new FormData();
 		urlx = 'register-petugas'
