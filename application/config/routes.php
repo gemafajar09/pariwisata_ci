@@ -37,6 +37,12 @@ $route['galery-add']['post'] = 'B_galery/simpan';
 $route['galery-add/(:num)']['post'] = 'B_galery/simpan/$1';
 $route['galery-del/(:num)']['get'] = 'B_galery/delete/$1';
 
+// banner
+$route['banner']['get'] = 'B_banner/index';
+$route['banner-add']['post'] = 'B_banner/simpan';
+$route['banner-add/(:num)']['post'] = 'B_banner/simpan/$1';
+$route['banner-del/(:num)']['get'] = 'B_banner/delete/$1';
+
 // peta
 $route['peta']['get'] = 'B_peta/index';
 $route['peta-add']['post'] = 'B_peta/simpan';
