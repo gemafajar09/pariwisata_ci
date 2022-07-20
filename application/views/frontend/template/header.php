@@ -40,6 +40,10 @@ $wisata = $this
 			<li class="nav-item">
 				<a class="nav-link" href="<?= base_url('home') ?>#testimoni">Testimoni</a>
 			</li>
+			<?php 
+				if(!isset($_SESSION['id_user'])):
+			?>
+
 			<li class="nav-item">
 				<a class="nav-link" role="button" onclick="loginx()" href="#">Login</a>
 			</li>
@@ -50,6 +54,14 @@ $wisata = $this
 					<a class="dropdown-item" role="button" onclick="registerx()" href="#">Petugas Wisata</a>
 				</div>
 			</li>
+			<?php else :?>
+				<li class="nav-item">
+					<a class="nav-link" role="button" onclick="logoutx()" href="#">Logout</a>
+				</li>
+			<li class="nav-item">
+				<a class="nav-link">Selamat Datang <b style="color:red"><?= $_SESSION['nama'] ?></b></i>
+			</li>
+			<?php endif ?>
 		</ul>
 	</div>
 </nav>
@@ -416,5 +428,31 @@ $wisata = $this
 				}
 			}
 		}
+	}
+
+	function logoutx() {
+		swal({
+				title: "Yakin Ingin Keluar",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					$.ajax({
+						url: 'logout',
+						type: 'GET',
+						dataType: 'json',
+						success: function(res) {
+							if (res.pesan) {
+								window.location.reload();
+							}
+						}
+					})
+				} else {
+					swal("Hapus Data Dibatalkan!");
+				}
+			});
+
 	}
 </script>
