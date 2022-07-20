@@ -74,7 +74,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">Deskripsi</label>
-						<textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
+						<textarea class=" form-control border-radius-0 w-100" placeholder="Enter text ..." id="deskripsi" name="deskripsi"></textarea>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -174,7 +174,7 @@
 		var filePath = fileInput.value;
 		var extensions = /(\.jpg|\.png)$/i;
 		var ukuran = fileInput.files[0].size;
-		if (ukuran > 1000000) {
+		if (ukuran > 10000000) {
 			alert('ukuran terlalu besar. Maksimal 1000KB')
 			fileInput.value = '';
 			return false;
