@@ -9,6 +9,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['b_login']['get'] = 'B_login/index';
 $route['login_admin']['post'] = 'B_login/login';
 $route['logout_admin']['get'] = 'B_login/logout';
+$route['logout']['get'] = 'B_login/logoutx';
 
 $route['dashboard']['get'] = 'B_home/index';
 

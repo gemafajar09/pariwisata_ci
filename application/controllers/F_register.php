@@ -74,7 +74,7 @@ class F_register extends CI_Controller
         $user = array(
             'username' =>  $_POST['username_add'],
             'password_hash' => password_hash($_POST['password_add'], PASSWORD_DEFAULT),
-            'status' => 0,
+            'status' => 1,
             'level' => 5,
         );
 
@@ -88,7 +88,6 @@ class F_register extends CI_Controller
             'id_user' => $id_user,
         );
 
-        $simpan = $this->User->simpan($user);
         $simpan = $this->Wisatawan->simpan($wisatawan);
 
         echo json_encode(['pesan' => $simpan]);

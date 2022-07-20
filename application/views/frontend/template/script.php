@@ -3,6 +3,7 @@
 <script src="<?= base_url() ?>assets/js/fontawesome.min.js"></script>
 <script src="<?= base_url() ?>assets/owl/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     $(document).ready(function() {

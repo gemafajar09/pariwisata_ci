@@ -61,6 +61,15 @@ class B_login extends CI_Controller {
                         'nama' => $users['nama'],
                         'foto' => $users['foto']
                         );
+                    }elseif($level == 5){
+                        $users = $this->db->query("SELECT * FROM tb_wisatawan WHERE id_user = '$id_user'")->row_array();
+                        $data = array(
+                        'id_user' => $user['id_user'],
+                        'level' => $user['level'],
+                        'nama' => $users['nama']
+                        );
+                        $this->session->set_userdata($data);
+                        redirect('/');
                     }
                     $this->session->set_userdata($data);
                     redirect('dashboard');
@@ -84,5 +93,11 @@ class B_login extends CI_Controller {
         session_destroy();
         $this->session->set_flashdata(['pesan' => 'Anda Telah Keluar.','type' => 'success']);
         redirect('home');
+    }
+
+    public function logoutx()
+    {
+        session_destroy();
+        echo json_encode(['pesan' => 'Anda Telah Keluar.','type' => 'success']);
     }
 }
