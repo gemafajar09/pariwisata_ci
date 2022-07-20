@@ -9,7 +9,7 @@ class F_home extends CI_Controller
         $data['galeri'] = $this->db->query('SELECT * FROM tb_galery limit 6')->result();
 
         $data['testimoni'] = $this->db->query('SELECT * FROM tb_testimoni')->result();
-        $data['pariwisata'] = $this->db->join('tb_peta', 'tb_peta.id_wisata = tb_wisata.id_wisata')->get('tb_wisata')->result();
+        $data['pariwisata'] = $this->db->query("SELECT * FROM tb_wisata")->result();
         $this->template->f_template('frontend/page/home', $data);
 
     }
@@ -32,7 +32,7 @@ class F_home extends CI_Controller
 
 	public function detailWisata($id)
 	{
-		$wisata = $this->db->join('tb_peta', 'tb_peta.id_wisata = tb_wisata.id_wisata')->where('tb_wisata.id_wisata', $id)->get('tb_wisata')->result();
-        $this->template->f_template('frontend/page/detail-wisata', ['data' => $wisata]);
+		$data['wisata'] = $this->db->query("SELECT * FROM tb_wisata WHERE id_wisata = $id")->row_array();
+        $this->template->f_template('frontend/page/detail-wisata', $data);
 	}
 }

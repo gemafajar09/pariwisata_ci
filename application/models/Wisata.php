@@ -1,6 +1,11 @@
 <?php
 class Wisata extends CI_Model
-{
+{   
+    public function getwisata()
+    {
+        return $this->db->query("SELECT * FROM tb_wisata")->result();
+    }
+
     public function getData()
     {
         return $this->db->query("SELECT * FROM tb_wisata a JOIN tb_pengelola b ON a.id_user = b.id_user")->result();

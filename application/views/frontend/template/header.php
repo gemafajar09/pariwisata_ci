@@ -26,19 +26,19 @@ $wisata = $this
 	<div class="collapse navbar-collapse" id="navbarNav" style="margin-left:30%">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="#home">Home</a>
+				<a class="nav-link" href="<?= base_url('home') ?>#home">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#pariwisata">Pariwisata</a>
+				<a class="nav-link" href="<?= base_url('home') ?>#pariwisata">Pariwisata</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#galery">Galery</a>
+				<a class="nav-link" href="<?= base_url('home') ?>#galery">Galery</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#berita">Berita</a>
+				<a class="nav-link" href="<?= base_url('home') ?>#berita">Berita</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#testimoni">Testimoni</a>
+				<a class="nav-link" href="<?= base_url('home') ?>#testimoni">Testimoni</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" role="button" onclick="loginx()" href="#">Login</a>
