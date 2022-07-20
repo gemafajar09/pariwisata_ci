@@ -18,7 +18,7 @@
         <?php foreach ($data as $isi) : ?>
             <div class="card mb-3">
                 <div class="m-3">
-                    <img src="<?= base_url('assets/upload/berita/' . $isi->foto) ?>" width="500px" alt="">
+                    <img src="<?= base_url('assets/upload/berita/' . $isi->foto) ?>" width="100%" alt="">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><?= $isi->judul ?></h5>

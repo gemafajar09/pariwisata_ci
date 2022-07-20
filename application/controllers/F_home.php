@@ -8,7 +8,7 @@ class F_home extends CI_Controller
         $data['berita'] = $this->db->get('tb_berita')->result();
         $data['galeri'] = $this->db->query('SELECT * FROM tb_galery limit 6')->result();
 
-        $data['testimoni'] = $this->db->query('SELECT * FROM tb_testimoni')->result();
+        $data['testimoni'] = $this->db->query('SELECT * FROM tb_testimoni where status = 1')->result();
         $data['pariwisata'] = $this->db->query("SELECT * FROM tb_wisata")->result();
         $this->template->f_template('frontend/page/home', $data);
 

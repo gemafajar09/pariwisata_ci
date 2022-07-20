@@ -110,7 +110,7 @@
 								<img src="<?= base_url() ?><?= $isi->foto  ?>" alt="" style="width:100%">
 							</div>
 							<div class="col-md-12 mt-3">
-								<?= $isi->deskripsi  ?>
+								<?= substr($isi->deskripsi,0,100)  ?>
 							</div>
 						</div>
 					</div>
@@ -119,11 +119,7 @@
 			<?php 
 			endforeach;
 			?>
-			<div class="ml-5 mr-5 mt-3">
-				<a href="detail-galery/"
-					style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;"
-					type="button" class="btn btn-sm">Lihat Semua Galeri</a>
-			</div>
+			
 			<?php
 			else :
 			?>
@@ -134,6 +130,13 @@
 			</center>
 			<?php endif ?>
 		</div>
+		<?php if($galeri != null): ?>
+		<div class="ml-5 mr-5 mt-3">
+			<a href="detail-galery/"
+				style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;"
+				type="button" class="btn btn-sm">Lihat Semua Galeri</a>
+		</div>
+		<?php endif?>
 	</div>
 </section>
 
@@ -151,12 +154,12 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-5">
 								<img src="<?= base_url('assets/upload/berita/' . $isi->foto) ?>" alt=""
-									style="width:100%">
+									style="width:100%; height:100%">
 							</div>
-							<div class="col-md-8">
-								<?= $isi->isi_berita ?>
+							<div class="col-md-7">
+								<?= substr($isi->isi_berita,0,200) ?>
 								<br>
 								<br>
 								<a href="detail-berita/<?= $isi->id_berita ?>" class="btn btn-sm btn-info ml-3"
@@ -249,7 +252,7 @@
 									<label for="">Komentar</label>
 									<textarea name="komentar" id="komentar" class="form-control" cols="20" rows="10"></textarea>
 								</div>
-								<button onclick="simpandata()" style="margin-top:5px; margin-left:5px; margin-right:5px" class="btn btn-block btn-primary" type="button">Kirim</button>
+								<button onclick="simpandata()" style="margin-top:5px; margin-left:5px; margin-right:5px" class="btn btn-block btn-primary" id="btnDis" type="button">Kirim</button>
 							</div>
 						</form>
 					</div>
@@ -258,6 +261,14 @@
 		</div>
 	</div>
 </section>
+
+<?php
+	if(isset($_SESSION['id_user'])){
+		$id = $_SESSION['id_user'];
+	}else{
+		$id = null;
+	}
+?>
 
 <section id="footer">
 	<div class="navbar navbar-inverse bg-dark fixed-bottom">
@@ -273,24 +284,35 @@
 
 	function simpandata()
 	{
-		var nama = $('#nama').val()
-        var email = $('#email').val()
-        var komentar = $('#komentar').val()
-        $.ajax({
-            url: 'testimoni-add',
-            type: 'POST',
-            dataType: 'JSON',
-            data: {
-				nama: nama,
-				email: email,
-				komentar: komentar,
-			},
-            success: function (res) {
-                if(res.pesan){
-                    window.location.reload();
-                }
-            }
-        })
+		var ids = '<?= $id ?>'
+		if(ids != '')
+		{
+			if($('#nama').val() == '' && $('#email').val() == '' && $('#Komentar').val() == '')
+			{
+				alert('Pastiakn Data Terisi')
+			}else{
+				var nama = $('#nama').val()
+				var email = $('#email').val()
+				var komentar = $('#komentar').val()
+				$.ajax({
+					url: 'testimoni-add',
+					type: 'POST',
+					dataType: 'JSON',
+					data: {
+						nama: nama,
+						email: email,
+						komentar: komentar,
+					},
+					success: function (res) {
+						if(res.pesan){
+							window.location.reload();
+						}
+					}
+				})
+			}
+		}else{
+			alert('Silahkan Login Terlebih Dahulu')
+		}
 	}
 
 	function hapusData(id) {
