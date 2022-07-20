@@ -6,10 +6,11 @@ class F_register extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Petugas');
+        $this->load->model('Wisatawan');
         $this->load->model('User');
     }
 
-    public function simpan()
+    public function simpanPetugas()
     {
         // rules adalah tahapan untuk pengecekan data sebelum masuk kedalam database
         $rules = $this->Petugas->rules();
@@ -62,9 +63,34 @@ class F_register extends CI_Controller
             );
 
             $simpan_petugas = $this->Petugas->simpan($data_petugas);
-            
+
 
             echo json_encode(['pesan' => $simpan_petugas, 'user' => $id_user]);
         }
+    }
+
+    public function simpanWisatawan($id = null)
+    {
+        $user = array(
+            'username' =>  $_POST['username_add'],
+            'password_hash' => password_hash($_POST['password_add'], PASSWORD_DEFAULT),
+            'status' => 0,
+            'level' => 5,
+        );
+
+        $id_user = $this->User->simpan($user);
+
+        $wisatawan = array(
+            'nama' =>  $_POST['nama_add'],
+            'email' =>  $_POST['email_add'],
+            'alamat' =>  $_POST['alamat_add'],
+            'nohp' => $_POST['nohp_add'],
+            'id_user' => $id_user,
+        );
+
+        $simpan = $this->User->simpan($user);
+        $simpan = $this->Wisatawan->simpan($wisatawan);
+
+        echo json_encode(['pesan' => $simpan]);
     }
 }

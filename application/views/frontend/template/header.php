@@ -84,24 +84,46 @@ $wisata = $this
 
 <!-- Modal Register Wisatawan -->
 <div class="modal" tabindex="-1" id="register-wisatawan" role="dialog">
-	<div class="modal-dialog modal-sm" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content" style="border-radius:15px">
 			<div class="modal-body">
-				<form action="<?= base_url('login_admin') ?>" method="post">
+				<form action="" method="post">
 					<center>
-						Login
+						Register
 					</center>
 					<hr>
-					<div class="form-group">
-						<label for="">Username</label>
-						<input type="text" class="form-control" placeholder="Username" name="username" id="username" required autocomplete="off">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">Nama</label>
+								<input type="text" class="form-control" placeholder="Masukkan Nama" name="nama_add" id="nama_add" required autocomplete="off">
+							</div>
+							<div class="form-group">
+								<label for="">Username</label>
+								<input type="text" class="form-control" placeholder="Masukkan Username" name="username_add" id="username_add" required autocomplete="off">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="email" class="form-control" placeholder="ahmadsabari@gmail.com" name="email_add" id="email_add" required autocomplete="off">
+							</div>
+							<div class="form-group">
+								<label for="">No. Telpon</label>
+								<input type="number" class="form-control" placeholder="0852xxxxxx" name="nohp_add" id="nohp_add" required autocomplete="off">
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>
-						<input type="password" class="form-control" placeholder="********" name="password" id="password" required autocomplete="off">
+						<input type="password" class="form-control" placeholder="********" name="password_add" id="password_add" required autocomplete="off">
 					</div>
-					<div align="right">
-						<button style="width:40%" type="submit" class="btn btn-primary btn-sm">Login</button>
+					<div class="form-group">
+						<label for="">Alamat</label>
+						<textarea name="alamat_add" id="alamat_add" class="form-control"></textarea>
+					</div>
+					<div align="center">
+						<button type="button" onclick="simpanWisatawan()" class="btn btn-primary mt-2" style="width:300px">Daftar</button>
 					</div>
 				</form>
 			</div>
@@ -230,7 +252,38 @@ $wisata = $this
 </div>
 
 <script>
-	function simpanWisata() {
+	function simpanWisatawan() {
+		var form_data = new FormData();
+		var urls = 'register-wisatawan'
+
+		var nama_add = $('#nama_add').val();
+		var username_add = $('#username_add').val();
+		var email_add = $('#email_add').val();
+		var nohp_add = $('#nohp_add').val();
+		var password_add = $('#password_add').val();
+		var alamat_add = $('#alamat_add').val();
+
+		form_data.append("nama_add", nama_add);
+		form_data.append("username_add", username_add);
+		form_data.append("email_add", email_add);
+		form_data.append("nohp_add", nohp_add);
+		form_data.append("password_add", password_add);
+		form_data.append("alamat_add", alamat_add);
+
+		$.ajax({
+			url: urls,
+			dataType: 'JSON',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,
+			type: 'post',
+			success: function(res) {
+				if (res.pesan) {
+					window.location.reload();
+				}
+			}
+		});
 	}
 
 	function simpanData() {

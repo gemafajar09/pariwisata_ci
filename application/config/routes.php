@@ -106,7 +106,8 @@ $route['petugas-up/(:num)']['get'] = 'B_petugas/unlock/$1';
 $route['petugas-del/(:num)']['get'] = 'B_petugas/delete/$1';
 
 // register
-$route['register-petugas']['post'] = 'F_register/simpan';
+$route['register-petugas']['post'] = 'F_register/simpanPetugas';
+$route['register-wisatawan']['post'] = 'F_register/simpanWisatawan';
 
 // testimonial
 $route['testimoni-add']['post'] = 'F_testimonial/simpan';
