@@ -10,8 +10,8 @@
 			height: 600px;
 		}
 	}
-
 </style>
+
 <section id="home" style="margin-top:4%">
 	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
@@ -47,7 +47,7 @@
 </section>
 
 <section id="pariwisata">
-	<div class="container mt-5">
+	<div class="mt-5">
 		<center>
 			<h2>Priwisata</h2>
 		</center>
@@ -96,16 +96,26 @@
 </section>
 
 <section id="galery">
-	<div class="container mt-5">
+	<div class="mt-5">
 		<center>
 			<h2>Galery</h2>
 		</center>
 		<hr>
+		<div class="float-right">
+			<?php if($galeri != null): ?>
+		<div class="mr-5">
+			<a href="detail-galery/"
+				style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;"
+				type="button" class="btn btn-sm">Lihat Semua Galeri</a>
+		</div>
+		<br><br>
+		<?php endif?>
+		</div>
 		<div class="row">
 			<?php 
 			if($galeri != null):
 			foreach ($galeri as $isi) : ?>
-			<div class="col-md-4 p-3">
+			<div class="col-md-3 p-3">
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
@@ -133,18 +143,11 @@
 			</center>
 			<?php endif ?>
 		</div>
-		<?php if($galeri != null): ?>
-		<div class="ml-5 mr-5 mt-3">
-			<a href="detail-galery/"
-				style="border-radius:25px;background-color: #4da823; font-size:18px; height: 40px; color:white; width:100%;"
-				type="button" class="btn btn-sm">Lihat Semua Galeri</a>
-		</div>
-		<?php endif?>
 	</div>
 </section>
 
 <section id="berita">
-	<div class="container mt-5">
+	<div class="mt-5">
 		<center>
 			<h2>Berita</h2>
 		</center>
@@ -281,12 +284,10 @@
 ?>
 
 <section id="footer">
-	<div class="navbar navbar-inverse bg-dark fixed-bottom">
-		<div class="container">
-			<p style="color:#fff">
-				Aplikasi Pariwisata
-			</p>
-		</div>
+	<div class="navbar-inverse bg-dark fixed-bottom">
+		<center class="text-white">
+			<span><marquee>Aplikasi Pariwisata</marquee></span>
+		</center>
 	</div>
 </section>
 
