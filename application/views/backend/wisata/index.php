@@ -46,13 +46,25 @@
 							<td><?= substr($isi->pusat_informasi,0,50) ?></td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->p3k) ?>" width="130px" alt="">
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->mushola) ?>" width="130px" alt="">
-							<td><?= $isi->luas_mushola ?> m<sup>2</sup< /td>
+							<td><?= $isi->luas_mushola ?> m<sup>2</sup</td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->tempat_parkir) ?>" width="130px" alt="">
-							<td><?= $isi->luas_tempat_parkir ?> m<sup>2</sup< /td>
+							<td><?= $isi->luas_tempat_parkir ?> m<sup>2</sup</td>
 							<td><img src="<?= base_url('assets/upload/wisata/' . $isi->wc) ?>" width="130px" alt="">
 							<td><?= $isi->jumlah_wc ?></td>
 							<td>
-								<button onclick="editData('<?= $isi->id_wisata ?>','<?= $isi->nama_wisata ?>','<?= $isi->alamat ?>','<?= $isi->pusat_informasi ?>','<?= $isi->p3k ?>','<?= $isi->mushola ?>','<?= $isi->luas_mushola ?>','<?= $isi->tempat_parkir ?>','<?= $isi->luas_tempat_parkir ?>','<?= $isi->wc ?>','<?= $isi->jumlah_wc ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
+								<button onclick="editData(
+									'<?= $isi->id_wisata ?>',
+									'<?= $isi->nama_wisata ?>',
+									'<?= $isi->alamat ?>',
+									`<?= $isi->pusat_informasi ?>`,
+									'<?= $isi->p3k ?>',
+									'<?= $isi->mushola ?>',
+									'<?= $isi->luas_mushola ?>',
+									'<?= $isi->tempat_parkir ?>',
+									'<?= $isi->luas_tempat_parkir ?>',
+									'<?= $isi->wc ?>',
+									'<?= $isi->foto_wisata ?>',
+									'<?= $isi->jumlah_wc ?>')" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
 								<button onclick="hapusData('<?= $isi->id_wisata ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
 							</td>
 						</tr>
@@ -82,7 +94,7 @@
 							</div>
 							<div class="form-group">
 								<label for="">Pusat Informasi</label>
-								<textarea class="textarea_editor form-control border-radius-0 w-100" placeholder="Enter text ..." id="pusat_informasi" name="pusat_informasi"></textarea>
+								<textarea class=" form-control border-radius-0 w-100" placeholder="Enter text ..." id="pusat_informasi" name="pusat_informasi"></textarea>
 							</div>
 							<div class="form-group">
 								<label for="">Mushola</label>
@@ -167,7 +179,7 @@
 		var tempat_parkir = $("#tempat_parkir").prop("files")[0];
 		var mushola = $("#mushola").prop("files")[0];
 		var p3k = $("#p3k").prop("files")[0];
-		var foro_wisata = $("#foto_wisata").prop("files")[0];
+		var foto_wisata = $("#foto_wisata").prop("files")[0];
 		var wc = $("#wc").prop("files")[0];
 
 		form_data.append("nama_wisata", nama_wisata);
@@ -207,7 +219,7 @@
 		});
 	}
 
-	function editData(id, nama_wisata, alamat, pusat_informasi, p3k, mushola, luas_mushola, tempat_parkir, luas_tempat_parkir, wc, jumlah_wc) {
+	function editData(id, nama_wisata, alamat, pusat_informasi, p3k, mushola, luas_mushola, tempat_parkir, luas_tempat_parkir, wc, foto_wisata, jumlah_wc) {
 
 		idx = id
 		path_p3k = p3k
@@ -296,7 +308,7 @@
 		var filePath = fileInput.value;
 		var extensions = /(\.jpg|\.png)$/i;
 		var ukuran = fileInput.files[0].size;
-		if (ukuran > 1000000) {
+		if (ukuran > 10000000) {
 			alert('ukuran terlalu besar. Maksimal 1000KB')
 			fileInput.value = '';
 			return false;
@@ -324,7 +336,7 @@
 		var filePath = fileInput.value;
 		var extensions = /(\.jpg|\.png)$/i;
 		var ukuran = fileInput.files[0].size;
-		if (ukuran > 1000000) {
+		if (ukuran > 10000000) {
 			alert('ukuran terlalu besar. Maksimal 1000KB')
 			fileInput.value = '';
 			return false;
@@ -352,7 +364,7 @@
 		var filePath = fileInput.value;
 		var extensions = /(\.jpg|\.png)$/i;
 		var ukuran = fileInput.files[0].size;
-		if (ukuran > 1000000) {
+		if (ukuran > 10000000) {
 			alert('ukuran terlalu besar. Maksimal 1000KB')
 			fileInput.value = '';
 			return false;
@@ -380,7 +392,7 @@
 		var filePath = fileInput.value;
 		var extensions = /(\.jpg|\.png)$/i;
 		var ukuran = fileInput.files[0].size;
-		if (ukuran > 1000000) {
+		if (ukuran > 10000000) {
 			alert('ukuran terlalu besar. Maksimal 1000KB')
 			fileInput.value = '';
 			return false;

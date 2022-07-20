@@ -22,9 +22,7 @@
 				<thead>
 					<tr>
 						<th style="width:10%">No</th>
-						<th>Lokasi</th>
-						<th>Latitude</th>
-						<th>Longtitude</th>
+						<th style="width:10%">URl</th>
 						<th>Objek Wisata</th>
 						<th style="width:20%"></th>
 					</tr>
@@ -33,12 +31,10 @@
 					<?php foreach($peta as $i => $a): ?>
 					<tr>
 						<td><?= $i+1 ?></td>
-						<td></td>
-						<td><?= $a->lat ?></td>
-						<td><?= $a->lng ?></td>
+						<td><a class="btn btn-info btn-sm" href="<?= $a->url ?>">Link</a></td>
 						<td><?= $a->nama_wisata ?></td>
 						<td>
-							<button onclick="editData('<?= $a->id_peta ?>','<?= $a->lat ?>','<?= $a->lng ?>','<?= $a->id_wisata ?>')"
+							<button onclick="editData('<?= $a->id_peta ?>','<?= $a->url ?>','<?= $a->id_wisata ?>')"
 								style="border-radius:25px;background-color: #ff7b00;color:white;width:50px"
 								type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button>
 							<button onclick="hapusData('<?= $a->id_peta ?>')"
@@ -65,7 +61,7 @@
 			<form action="" method="post">
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-6">
+						<!-- <div class="col-md-12">
 							<div class="form-group">
 								<label for="">Latitude</label>
 								<input type="text" class="form-control" placeholder="Ex : -1002132317" id="lat" name="lat"
@@ -76,6 +72,13 @@
 							<div class="form-group">
 								<label for="">Longtitude</label>
 								<input type="text" class="form-control" placeholder="Ex : 98726364552" id="lng" name="lng"
+									required>
+							</div>
+						</div> -->
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="">Url Maps</label>
+								<input type="text" class="form-control" placeholder="Ex : http://maps.google.co.id" id="url" name="url"
 									required>
 							</div>
 						</div>
@@ -110,12 +113,11 @@
     })
 
 	// function untuk tampilkan modal untuk tambah data
-	function editData(id,lat,lng,id_objek) {
+	function editData(id,url,id_objek) {
 		idx = id
 		// set judul pada title modal
 		$('#judul').html("Edit Data")
-        $('#lat').val(lat)
-        $('#lng').val(lng)
+        $('#url').val(url)
         $('#id_objek').val(id_objek)
 		// perintah membuka modal
 		$('#dataPeta').modal('show')
@@ -129,17 +131,14 @@
             urlx = 'peta-add/' + idx;
         }
 
-        alert(urlx)
-		var lat = $('#lat').val()
-        var lng = $('#lng').val()
+		var url = $('#url').val()
         var id_objek = $('#id_objek').val()
         $.ajax({
             url: urlx,
             type: 'POST',
             dataType: 'JSON',
             data: {
-				lat: lat,
-				lng: lng,
+				url: url,
 				id_objek: id_objek,
 			},
             success: function (res) {

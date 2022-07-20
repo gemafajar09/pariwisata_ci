@@ -4,13 +4,8 @@ class Peta extends CI_Model {
 	{
         return [
 			[
-				'field' => 'lat', 
-				'label' => 'Latitude', 
-				'rules' => 'required'
-			],
-			[
-				'field' => 'lng', 
-				'label' => 'Langitude', 
+				'field' => 'url', 
+				'label' => 'Url', 
 				'rules' => 'required'
 			],
 			[
