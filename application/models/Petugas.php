@@ -71,9 +71,10 @@ class Petugas extends CI_Model
 
     public function find($id)
     {
-        $petugas = $this->db->where('id_petugas', $id)->get('tb_petugas')->row_array();
+        $petugas = $this->db->where('id_user', $id)->get('tb_petugas')->row_array();
         $status = $petugas['status'] == 0 ? 1 : 0;
-        return $this->db->query("UPDATE tb_petugas SET status = $status WHERE id_petugas = '$id'");
+        $this->db->query("UPDATE tb_user SET status = $status WHERE id_user = '$id'");
+        return $this->db->query("UPDATE tb_petugas SET status = $status WHERE id_user = '$id'");
     }
 
     public function update($data, $id)
@@ -83,8 +84,8 @@ class Petugas extends CI_Model
 
     public function delete($id)
     {
-        $petugas = $this->db->get_Where('tb_petugas', ['id_petugas' => $id])->row_array();
-        $petugas_id_user =  $this->db->get_Where('tb_petugas', ['id_petugas' => $id])->row();
+        $petugas = $this->db->get_Where('tb_petugas', ['id_user' => $id])->row_array();
+        $petugas_id_user =  $this->db->get_Where('tb_petugas', ['id_user' => $id])->row();
         $id_user = $petugas_id_user->id_user;
         if (file_exists($petugas['foto'])) {
             unlink('assets/upload/petugas/' . $petugas['foto']);
@@ -96,6 +97,6 @@ class Petugas extends CI_Model
             unlink('assets/upload/petugas/' . $petugas['kk']);
         }
         $this->db->where('id_user', $id_user)->delete('tb_user');
-        return $this->db->where('id_petugas', $petugas['id_petugas'])->delete('tb_petugas');
+        return $this->db->where('id_user', $petugas['id_user'])->delete('tb_petugas');
     }
 }

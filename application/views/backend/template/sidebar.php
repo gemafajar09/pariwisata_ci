@@ -143,7 +143,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?= base_url('surat') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-file"></span><span class="mtext">Surat Rekomendasi</span>
 							</a>
 						</li>
@@ -195,11 +195,13 @@
 
 					<!-- petugas wisata -->
 					<?php if($_SESSION['level'] == 4): ?>
+						<?php if($_SESSION['status'] == 1): ?>
 						<li class="dropdown">
 							<a href="<?= base_url('tiket') ?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Daftar Tiket Wisata</span>
 							</a>
 						</li>
+						<?php endif ?>
 						<!-- <li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-ticket"></span><span class="mtext">Detail Profile</span>

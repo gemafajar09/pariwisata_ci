@@ -11,6 +11,10 @@ $route['login_admin']['post'] = 'B_login/login';
 $route['logout_admin']['get'] = 'B_login/logout';
 $route['logout']['get'] = 'B_login/logoutx';
 
+$route['b_profile/(:num)/(:num)']['get'] = 'B_login/profile/$1/$2';
+$route['b_profile-update/(:num)/(:num)']['post'] = 'B_login/profile_update/$1/$2';
+$route['b_pass-update/(:num)/(:num)']['post'] = 'B_login/passwordUpdate/$1/$2';
+
 $route['dashboard']['get'] = 'B_home/index';
 
 // operator
@@ -118,4 +122,9 @@ $route['surat']['get'] = 'B_surat/index';
 $route['surat-add']['post'] = 'B_surat/simpan';
 $route['surat-download/(:num)']['get'] = 'B_surat/download/$1';
 $route['surat-del/(:num)']['get'] = 'B_surat/delete/$1';
+
+// profile
+$route['profile/(:num)']['get'] = 'F_home/profile/$1';
+$route['profile-update/(:num)']['post'] = 'F_home/profile_update/$1';
+$route['pass-update/(:num)']['post'] = 'F_home/passwordUpdate/$1';
 

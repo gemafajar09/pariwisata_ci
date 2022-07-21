@@ -37,4 +37,27 @@ class F_home extends CI_Controller
 		$data['wisata'] = $this->db->query("SELECT * FROM tb_wisata a left join tb_peta b on a.id_wisata=b.id_wisata WHERE a.id_wisata = $id")->row_array();
         $this->template->f_template('frontend/page/detail-wisata', $data);
 	}
+
+    public function profile($id)
+    {
+        $data['profile'] = $this->db->query("SELECT * FROM tb_wisatawan where id_user = $id")->row_array();
+        $this->template->f_template('frontend/page/profile',$data);
+    }
+
+    public function profile_update($id) {
+        $data['nama'] = $_POST['namax'];
+        $data['email'] = $_POST['emailx'];
+        $data['nohp'] = $_POST['nohpx'];
+        $data['alamat'] = $_POST['alamatx'];
+
+        $simpan = $this->db->where(['id_wisatawan',$id])->update('tb_wisatawan',$data);
+        echo json_encode(['pesan' => $simpan]);
+    }
+
+    public function passwordUpdate($id)
+    {
+        $data['password_hash'] = password_hash($_POST['passwordx'],PASSWORD_DEFAULT);
+        $simpan = $this->db->where(['id_user',$id])->update('tb_user',$data);
+        echo json_encode(['pesan' => $simpan]);
+    }
 }

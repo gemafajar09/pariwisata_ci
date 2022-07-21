@@ -50,7 +50,7 @@
                             <td>
                                 <!-- <button onclick="unlockPetugas('<?= $isi->id_petugas ?>')" style="border-radius:25px;background-color:<?= $isi->status == 1 ? '#346cc7' : '#3aba3c' ?> ;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-<?= $isi->status == 1 ? 'eye' : 'check' ?>"></i></button>
                                 <button onclick="editData()" style="border-radius:25px;background-color: #ff7b00;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-edit"></i></button> -->
-                                <button onclick="hapusData('<?= $isi->id_petugas ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
+                                <button onclick="hapusData('<?= $isi->id_user ?>')" style="border-radius:25px;background-color: #ea003a;color:white;width:50px" type="button" class="btn btn-sm"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>

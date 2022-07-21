@@ -41,8 +41,18 @@ $wisata = $this
 				<a class="nav-link" href="<?= base_url('home') ?>#testimoni">Testimoni</a>
 			</li>
 			<?php 
-				if(!isset($_SESSION['id_user'])):
+				if(isset($_SESSION['id_user']) && $_SESSION['level'] == 5):
 			?>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button" href="#">Selamat Datang <b style="color:red"><?= $_SESSION['nama'] ?></b></a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="<?= base_url('profile/'.$_SESSION['id_user']) ?>">Profile</a>
+					<a class="dropdown-item" role="button" onclick="logoutx()" href="#">Logout</a>
+				</div>
+			</li>
+			
+			<?php else :?>
 
 			<li class="nav-item">
 				<a class="nav-link" role="button" onclick="loginx()" href="#">Login</a>
@@ -53,13 +63,6 @@ $wisata = $this
 					<a class="dropdown-item" role="button" onclick="registerw()" href="#">Wisatawan</a>
 					<a class="dropdown-item" role="button" onclick="registerx()" href="#">Petugas Wisata</a>
 				</div>
-			</li>
-			<?php else :?>
-				<li class="nav-item">
-					<a class="nav-link" role="button" onclick="logoutx()" href="#">Logout</a>
-				</li>
-			<li class="nav-item">
-				<a class="nav-link">Selamat Datang <b style="color:red"><?= $_SESSION['nama'] ?></b></i>
 			</li>
 			<?php endif ?>
 		</ul>
@@ -440,12 +443,12 @@ $wisata = $this
 			.then((willDelete) => {
 				if (willDelete) {
 					$.ajax({
-						url: 'logout',
+						url: '<?= base_url('logout') ?>',
 						type: 'GET',
 						dataType: 'json',
 						success: function(res) {
 							if (res.pesan) {
-								window.location.reload();
+								window.location="<?= base_url('/') ?>";
 							}
 						}
 					})

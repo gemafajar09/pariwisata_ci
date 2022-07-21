@@ -18,7 +18,7 @@ class B_login extends CI_Controller {
         if($this->form_validation->run() != false){
             $username = $_POST['username'];
             $password = $_POST['password'];
-			$user = $this->db->query("SELECT * FROM tb_user WHERE username = '$username' AND status = 1")->row_array();
+			$user = $this->db->query("SELECT * FROM tb_user WHERE username = '$username'")->row_array();
             if(!isset($user))
             {
                 $this->session->set_flashdata(['pesan','Data tidak ditemukan','type' => 'error']);
@@ -31,35 +31,48 @@ class B_login extends CI_Controller {
                     $id_user = $user['id_user'];
                     if($level == 1)
                     {
-                        $data = array(
-                        'id_user' => $user['id_user'],
-                        'level' => $user['level'],
-                        'nama' => 'ADMINISTRATOR',
-                        'foto' => 'assets/src/images/user.png'
-                        );
+                        if($user['status'] == 1){
+                            $data = array(
+                            'id_user' => $user['id_user'],
+                            'level' => $user['level'],
+                            'nama' => 'ADMINISTRATOR',
+                            'foto' => 'assets/src/images/user.png'
+                            );
+                        }else{
+                            $this->session->set_flashdata(['pesan' =>'Silahkan Tunggu Sampai diverifikasi Administrator','type' => 'error']);
+                        }
                     }elseif($level == 2){
                         $users = $this->db->query("SELECT * FROM tb_operator WHERE id_user = '$id_user'")->row_array();
-                        $data = array(
-                        'id_user' => $user['id_user'],
-                        'level' => $user['level'],
-                        'nama' => $users['nama'],
-                        'foto' => $users['foto']
-                        );
+                        if($user['status'] == 1){
+                            $data = array(
+                            'id_user' => $user['id_user'],
+                            'level' => $user['level'],
+                            'nama' => $users['nama'],
+                            'foto' => $users['foto']
+                            );
+                        }else{
+                            $this->session->set_flashdata(['pesan' =>'Silahkan Tunggu Sampai diverifikasi Administrator','type' => 'error']);
+                        }
                     }elseif($level == 3){
                         $users = $this->db->query("SELECT * FROM tb_pengelola WHERE id_user = '$id_user'")->row_array();
-                        $data = array(
-                        'id_user' => $user['id_user'],
-                        'level' => $user['level'],
-                        'nama' => $users['nama'],
-                        'foto' => $users['foto']
-                        );
+                        if($user['status'] == 1){
+                            $data = array(
+                            'id_user' => $user['id_user'],
+                            'level' => $user['level'],
+                            'nama' => $users['nama'],
+                            'foto' => $users['foto']
+                            );
+                        }else{
+                            $this->session->set_flashdata(['pesan' =>'Silahkan Tunggu Sampai diverifikasi Administrator','type' => 'error']);
+                        }
                     }elseif($level == 4){
                         $users = $this->db->query("SELECT * FROM tb_petugas WHERE id_user = '$id_user'")->row_array();
                         $data = array(
                         'id_user' => $user['id_user'],
                         'level' => $user['level'],
                         'nama' => $users['nama'],
-                        'foto' => $users['foto']
+                        'foto' => $users['foto'],
+                        'status' => $users['status'],
                         );
                     }elseif($level == 5){
                         $users = $this->db->query("SELECT * FROM tb_wisatawan WHERE id_user = '$id_user'")->row_array();
@@ -99,5 +112,39 @@ class B_login extends CI_Controller {
     {
         session_destroy();
         echo json_encode(['pesan' => 'Anda Telah Keluar.','type' => 'success']);
+    }
+
+    public function profile($id,$level)
+    {
+        if($level == 2){
+            $data['profile'] = $this->db->query("SELECT * FROM tb_operator where id_user = $id")->row_array();
+        }elseif($level == 3){
+            $data['profile'] = $this->db->query("SELECT * FROM tb_pengelola where id_user = $id")->row_array();
+        }elseif($level == 4){
+            $data['profile'] = $this->db->query("SELECT * FROM tb_petugas where id_user = $id")->row_array();
+        }
+        $this->template->b_template('backend/login/profile',$data);
+    }
+
+    public function profile_update($id,$level) {
+        $data['nama'] = $_POST['namax'];
+        $data['alamat'] = $_POST['alamatx'];
+
+         if($level == 2){
+            $simpan = $this->db->where(['id_user',$id])->update('tb_operator',$data);
+        }elseif($level == 3){
+            $simpan = $this->db->where(['id_user',$id])->update('tb_pengelola',$data);
+        }elseif($level == 4){
+            $simpan = $this->db->where(['id_user',$id])->update('tb_petugas',$data);
+        }
+
+        echo json_encode(['pesan' => $simpan]);
+    }
+
+    public function passwordUpdate($id,$level)
+    {
+        $data['password_hash'] = password_hash($_POST['passwordx'],PASSWORD_DEFAULT);
+        $simpan = $this->db->where(['id_user',$id])->update('tb_user',$data);
+        echo json_encode(['pesan' => $simpan]);
     }
 }

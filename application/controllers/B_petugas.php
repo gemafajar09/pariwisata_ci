@@ -25,7 +25,7 @@ class B_petugas extends CI_Controller
     {
         $petugas = $this->Petugas->find($id);
         echo json_encode(['pesan' => $petugas]);
-    }
+    } 
 
     public function simpan($id = null)
     {
