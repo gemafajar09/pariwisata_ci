@@ -37,32 +37,38 @@ class F_register extends CI_Controller
 
 
             // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder petugas
-            $name_foto = fileUpload($_FILES['foto'], 'assets/upload/petugas/');
+            if($_POST['foto'] != 'undefined')
+            {
+                $data['foto'] = fileUpload($_FILES['foto'], 'assets/upload/petugas/');
+            }else{
+                $data['foto'] = 'default.png';
+            }
+            if($_POST['kk'] != 'undefined')
+            {
+                $data['kk'] = fileUpload($_FILES['kk'], 'assets/upload/petugas/');
+            }else{
+                $data['kk'] = 'default.png';
+            }
+            if($_POST['ijazah'] != 'undefined')
+            {
+                $data['ijazah'] = fileUpload($_FILES['ijazah'], 'assets/upload/petugas/');
+            }else{
+                $data['ijazah'] = 'default.png';
+            }
+            $data['nama'] = $_POST['nama'];
+            $data['nik'] = $_POST['nik'];
+            $data['jabatan'] = $_POST['jabatan'];
+            $data['alamat'] = $_POST['alamat'];
+            $data['tgl_lahir'] = $_POST['tgl_lahir'];
+            $data['jenis_kelamin'] = $_POST['jenis_kelamin'];
+            $data['no_hp'] = $_POST['nohp'];
+            $data['agama'] = $_POST['agama'];
+            $data['pendidikan'] = $_POST['pendidikan'];
+            $data['id_user'] = $id_user;
+            $data['id_wisata'] = $_POST['objek_wisata'];
+            
 
-            // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder petugas
-            $name_kk = fileUpload($_FILES['kk'], 'assets/upload/petugas/');
-
-            // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder petugas
-            $name_ijazah = fileUpload($_FILES['ijazah'], 'assets/upload/petugas/');
-
-            $data_petugas = array(
-                'nama' => $_POST['nama'],
-                'nik' => $_POST['nik'],
-                'jabatan' => $_POST['jabatan'],
-                'foto' => $name_foto,
-                'alamat' => $_POST['alamat'],
-                'tgl_lahir' => $_POST['tgl_lahir'],
-                'ijazah' => $name_ijazah,
-                'jenis_kelamin' => $_POST['jenis_kelamin'],
-                'no_hp' => $_POST['nohp'],
-                'kk' => $name_kk,
-                'agama' => $_POST['agama'],
-                'pendidikan' => $_POST['pendidikan'],
-                'id_user' => $id_user,
-                'id_wisata' => $_POST['objek_wisata'],
-            );
-
-            $simpan_petugas = $this->Petugas->simpan($data_petugas);
+            $simpan_petugas = $this->Petugas->simpan($data);
 
 
             echo json_encode(['pesan' => $simpan_petugas, 'user' => $id_user]);
