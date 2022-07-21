@@ -1,7 +1,7 @@
 <?php
 class Tiket extends CI_Model {
     public function getData() {
-        return $this->db->query("SELECT * FROM tb_tiket a join tb_wisata b join tb_user c ON a.id_wisata = b.id_wisata AND a.id_user = c.id_user")->result();
+        return $this->db->query("SELECT * FROM tb_tiket a join tb_wisata b ON a.id_wisata = b.id_wisata")->result();
     }
 
     public function simpan($data)

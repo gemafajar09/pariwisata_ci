@@ -11,6 +11,7 @@ $route['login_admin']['post'] = 'B_login/login';
 $route['logout_admin']['get'] = 'B_login/logout';
 $route['logout']['get'] = 'B_login/logoutx';
 
+// profile
 $route['b_profile/(:num)/(:num)']['get'] = 'B_login/profile/$1/$2';
 $route['b_profile-update/(:num)/(:num)']['post'] = 'B_login/profile_update/$1/$2';
 $route['b_pass-update/(:num)/(:num)']['post'] = 'B_login/passwordUpdate/$1/$2';
