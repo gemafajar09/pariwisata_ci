@@ -45,56 +45,68 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <button onclick="updatePass('<?= $profile['id_user'] ?>''<?= $profile['level'] ?>')" class="btn btn-primary profile-button btn-block" type="button">Save Password</button>
+                    <button onclick="updatePass('<?= $profile['id_user'] ?>', '<?= $profile['level'] ?>')" class="btn btn-primary profile-button btn-block" type="button">Save Password</button>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 <script>
-    function updateProfile(id,level){
-        var nama = $('#namax').val()
-        var email = $('#emailx').val()
-        var nohp = $('#nohpx').val()
-        var alamat = $('#alamatx').val()
+    function updateProfile(id, level) {
+        var form_data = new FormData();
+
+        var namax = $('#namax').val()
+        var emailx = $('#emailx').val()
+        var nohpx = $('#nohpx').val()
+        var alamatx = $('#alamatx').val()
+
+        form_data.append("namax", namax);
+        form_data.append("emailx", emailx);
+        form_data.append("nohpx", nohpx);
+        form_data.append("alamatx", alamatx);
 
         $.ajax({
-            url : "<?= base_url('c_profile-update') ?>/"+id+"/"+level,
-            type: "POST",
-            dataType: "JSON",
-            data: {
-                'namax':nama,
-                'emailx':email,
-                'nohpx':nohp,
-                'alamatx':alamat,
-            },
-            success: function(res){
-                if(res.pesan){
+            url: "<?= base_url('b_profile-update') ?>/" + id + "/" + level,
+            type: 'post',
+            dataType: 'JSON',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success: function(res) {
+                if (res.pesan) {
                     window.location.reload();
                 }
             }
-        })
+        });
     }
 
-    function updatePass(id,level){
+    function updatePass(id, level) {
+        var form_data = new FormData();
+        
         var password = $('#passwordx').val()
         var password1 = $('#password1x').val()
 
-        if(password == password1){
+        form_data.append("passwordx", password);
+        form_data.append("password1x", password1);
+
+        if (password == password1) {
             $.ajax({
-                url : "<?= base_url('b_pass-update') ?>/"+id+"/"+level,
-                type: "POST",
-                dataType: "JSON",
-                data: {
-                    'passwordx':password,
-                },
-                success: function(res){
-                    if(res.pesan){
+                url: "<?= base_url('b_pass-update') ?>/" + id + "/" + level,
+                type: 'post',
+                dataType: 'JSON',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                success: function(res) {
+                    if (res.pesan) {
                         window.location.reload();
                     }
                 }
             })
-        }else{
+        } else {
             alert("Pastikan Password Sama!")
         }
     }

@@ -37,23 +37,20 @@ class F_register extends CI_Controller
 
 
             // fungsi fileupload adalah fungsi untuk menyimpan gambar pada folder petugas
-            if($_POST['foto'] != 'undefined')
-            {
-                $data['foto'] = fileUpload($_FILES['foto'], 'assets/upload/petugas/');
-            }else{
+            if ($_POST['foto'] = 'undefined') {
                 $data['foto'] = 'default.png';
+            } else {
+                $data['foto'] = fileUpload($_FILES['foto'], 'assets/upload/petugas/');
             }
-            if($_POST['kk'] != 'undefined')
-            {
-                $data['kk'] = fileUpload($_FILES['kk'], 'assets/upload/petugas/');
-            }else{
+            if ($_POST['kk'] = 'undefined') {
                 $data['kk'] = 'default.png';
+            } else {
+                $data['kk'] = fileUpload($_FILES['kk'], 'assets/upload/petugas/');
             }
-            if($_POST['ijazah'] != 'undefined')
-            {
-                $data['ijazah'] = fileUpload($_FILES['ijazah'], 'assets/upload/petugas/');
-            }else{
+            if ($_POST['ijazah'] = 'undefined') {
                 $data['ijazah'] = 'default.png';
+            } else {
+                $data['ijazah'] = fileUpload($_FILES['ijazah'], 'assets/upload/petugas/');
             }
             $data['nama'] = $_POST['nama'];
             $data['nik'] = $_POST['nik'];
@@ -66,7 +63,7 @@ class F_register extends CI_Controller
             $data['pendidikan'] = $_POST['pendidikan'];
             $data['id_user'] = $id_user;
             $data['id_wisata'] = $_POST['objek_wisata'];
-            
+
 
             $simpan_petugas = $this->Petugas->simpan($data);
 

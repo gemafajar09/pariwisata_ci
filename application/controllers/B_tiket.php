@@ -18,6 +18,17 @@ class B_tiket extends CI_Controller
         $this->template->b_template('backend/tiket/index', ['wisata' => $wisata, 'tiket' => $tiket]);
     }
 
+    public function tiket()
+    {
+        $data['wisata'] = $this
+            ->db
+            ->get('tb_wisata')
+            ->result();
+
+        $data['tiket'] = $this->db->query("SELECT * FROM tb_tiket a join tb_wisata b join tb_user c ON a.id_wisata = b.id_wisata AND a.id_user = c.id_user")->result();
+        $this->template->b_template('backend/tiket/index', $data);
+    }
+
     public function simpan($id = null)
     {
         $rules = $this->Tiket->rules();
