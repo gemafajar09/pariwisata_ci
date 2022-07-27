@@ -26,12 +26,7 @@ final class Wisata extends AbstractMigration
             ->addColumn('alamat', 'text')
             ->addColumn('pusat_informasi','text')
             ->addColumn('p3k','text')
-            ->addColumn('mushola','text')
-            ->addColumn('luas_mushola','text')
-            ->addColumn('tempat_parkir','text')
-            ->addColumn('luas_tempat_parkir','text')
-            ->addColumn('wc','text')
-            ->addColumn('jumlah_wc','integer')
+            ->addColumn('paket_wisata','string')
             ->create();
     }
 }

@@ -130,7 +130,6 @@ class B_login extends CI_Controller
     public function profile_update($id, $level)
     {
         // var_dump($id); die();
-
         $data = array(
             'nama' => $_POST['namax'],
             'alamat' => $_POST['alamatx'],

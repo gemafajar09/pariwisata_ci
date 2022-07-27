@@ -36,18 +36,8 @@ class Wisata extends CI_Model
                 'rules' => 'required'
             ],
             [
-                'field' => 'luas_mushola',
-                'label' => 'Luas_Mushola',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'luas_tempat_parkir',
-                'label' => 'Luas_Tempat_Parkir',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'jumlah_wc',
-                'label' => 'Jumlah_WC',
+                'field' => 'paket_wisata',
+                'label' => 'Paket Wisata',
                 'rules' => 'required'
             ],
         ];
@@ -63,14 +53,8 @@ class Wisata extends CI_Model
         if (file_exists($wisata['p3k'])){
             unlink($wisata['p3k']);
         }
-        if (file_exists($wisata['mushola'])){
-            unlink($wisata['mushola']);
-        }
-        if (file_exists($wisata['tempat_parkir'])){
-            unlink($wisata['tempat_parkir']);
-        }
-        if (file_exists($wisata['wc'])){
-            unlink($wisata['wc']);
+        if (file_exists($wisata['foto_wisata'])){
+            unlink($wisata['foto_wisata']);
         }
          return $this->db->where('id_wisata',$wisata['id_wisata'])->delete('tb_wisata');
     }

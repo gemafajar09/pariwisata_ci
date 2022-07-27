@@ -26,7 +26,9 @@
 						<span class="user-name"><?= $_SESSION['nama'] ?></span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-						<a class="dropdown-item" href="<?= base_url('b_profile/'.$_SESSION['id_user']."/".$_SESSION['level']) ?>"><i class="dw dw-user1"></i> Profile</a>
+						<?php if ($_SESSION['level'] != 1) : ?>
+							<a class="dropdown-item" href="<?= base_url('b_profile/' . $_SESSION['id_user'] . "/" . $_SESSION['level']) ?>"><i class="dw dw-user1"></i> Profile</a>
+						<?php endif ?>
 						<a class="dropdown-item" href="<?= base_url('logout_admin') ?>"><i class="dw dw-logout"></i> Log Out</a>
 					</div>
 				</div>

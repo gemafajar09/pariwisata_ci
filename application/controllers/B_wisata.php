@@ -27,9 +27,6 @@ class B_wisata extends CI_Controller
         } else {
             if (!isset($id)) {
                 $foto_p3k = isset($_FILES['p3k']) ? fileUpload($_FILES['p3k'], 'assets/upload/wisata/') : 'default.png';
-                $foto_mushola = isset($_FILES['mushola']) ? fileUpload($_FILES['mushola'], 'assets/upload/wisata/') : 'default.png';
-                $foto_parkir = isset($_FILES['tempat_parkir']) ? fileUpload($_FILES['tempat_parkir'], 'assets/upload/wisata/'): 'default.png';
-                $foto_wc = isset($_FILES['wc']) ? fileUpload($_FILES['wc'], 'assets/upload/wisata/') : 'default.png';
                 $foto_wisata = isset($_FILES['foto_wisata']) ? fileUpload($_FILES['foto_wisata'], 'assets/upload/wisata/') : 'default.png';
 
                 $data = array(
@@ -39,12 +36,7 @@ class B_wisata extends CI_Controller
                     'alamat' => $_POST['alamat'],
                     'pusat_informasi' => $_POST['pusat_informasi'],
                     'p3k' =>  $foto_p3k,
-                    'mushola' =>  $foto_mushola,
-                    'luas_mushola' => $_POST['luas_mushola'],
-                    'tempat_parkir' =>  $foto_parkir,
-                    'luas_tempat_parkir' => $_POST['luas_tempat_parkir'],
-                    'wc' =>  $foto_wc,
-                    'jumlah_wc' => $_POST['jumlah_wc'],
+                    'paket_wisata' => $_POST['paket_wisata'],
                 );
 
                 $simpan = $this->Wisata->simpan($data);
@@ -62,21 +54,7 @@ class B_wisata extends CI_Controller
                 {
                     $data['p3k'] = fileUpload($_FILES['p3k'], 'assets/upload/wisata/');
                 }
-                if(isset($_FILES['mushola']))
-                {
-                    $data['mushola'] = fileUpload($_FILES['mushola'], 'assets/upload/wisata/');
-                }
-                $data['luas_mushola'] = $_POST['luas_mushola'];
-                if(isset($_FILES['tempat_parkir']))
-                {
-                    $data['tempat_parkir'] = fileUpload($_FILES['tempat_parkir'], 'assets/upload/wisata/');
-                }
-                $data['luas_tempat_parkir'] = $_POST['luas_tempat_parkir'];
-                if(isset($_FILES['wc']))
-                {
-                    $data['wc'] = fileUpload($_FILES['wc'], 'assets/upload/wisata/');
-                }
-                $data['jumlah_wc'] = $_POST['jumlah_wc'];
+                $data['paket_wisata'] = $_POST['paket_wisata'];
 
 
                 $edit = $this->Wisata->update($data, $id);
