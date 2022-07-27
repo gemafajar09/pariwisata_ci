@@ -132,30 +132,17 @@
 		var pusat_informasi = $('#pusat_informasi').val();
 		var alamat = $('#alamat').val();
 		var paket_wisata = $('#paket_wisata').val();
-		// var luas_mushola = $('#luas_mushola').val();
-		// var luas_tempat_parkir = $('#luas_tempat_parkir').val();
-		// var tempat_parkir = $("#tempat_parkir").prop("files")[0];
-		// var mushola = $("#mushola").prop("files")[0];
 		var p3k = $("#p3k").prop("files")[0];
 		var foto_wisata = $("#foto_wisata").prop("files")[0];
-		// var wc = $("#wc").prop("files")[0];
 
 		form_data.append("nama_wisata", nama_wisata);
 		form_data.append("foto_wisata", foto_wisata);
 		form_data.append("pusat_informasi", pusat_informasi);
 		form_data.append("alamat", alamat);
 		form_data.append("paket_wisata", paket_wisata);
-		// form_data.append("luas_tempat_parkir", luas_tempat_parkir);
-		// form_data.append("luas_mushola", luas_mushola);
-		// form_data.append("tempat_parkir", tempat_parkir);
-		// form_data.append("mushola", mushola);
 		form_data.append("p3k", p3k);
-		// form_data.append("wc", wc);
 
 		if (idx != null) {
-			// form_data.append("path_parkir", path_parkir);
-			// form_data.append("path_wc", path_wc);
-			// form_data.append("path_mushola", path_mushola);
 			form_data.append("path_p3k", path_p3k);
 			urlx = "wisata-add/" + idx;
 		}
@@ -180,24 +167,14 @@
 
 		idx = id
 		path_p3k = p3k
-		// path_wc = wc
-		// path_parkir = tempat_parkir
-		// path_mushola = mushola
 
 		$('#nama_wisata').val(nama_wisata)
 		$('#alamat').val(alamat)
 		$('#pusat_informasi').val(pusat_informasi)
-		// $('#luas_tempat_parkir').val(luas_tempat_parkir)
-		// $('#luas_mushola').val(luas_mushola)
 		$('#paket_wisata').val(paket_wisata)
 		document.getElementById('showGambarP3K').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + p3k +
 			'" width="120px"/>';
-		// document.getElementById('showGambarMushola').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + mushola +
-		// 	'" width="120px"/>';
-		// document.getElementById('showGambarParkir').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + tempat_parkir +
-		// 	'" width="120px"/>';
-		// document.getElementById('showGambarWc').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + wc +
-		// 	'" width="120px"/>';
+	
 		document.getElementById('showGambarWisata').innerHTML = '<img src="' + base + 'assets/upload/wisata/' + foto_wisata +
 			'" width="120px"/>';
 
@@ -288,87 +265,4 @@
 		}
 	}
 
-	// function tampilfotoparkir() {
-	// 	var fileInput = document.getElementById('tempat_parkir');
-	// 	var filePath = fileInput.value;
-	// 	var extensions = /(\.jpg|\.png)$/i;
-	// 	var ukuran = fileInput.files[0].size;
-	// 	if (ukuran > 10000000) {
-	// 		alert('ukuran terlalu besar. Maksimal 1000KB')
-	// 		fileInput.value = '';
-	// 		return false;
-	// 	} else {
-	// 		if (!extensions.exec(filePath)) {
-	// 			alert('Silakan unggah file yang memiliki ekstensi .jpg/.png.');
-	// 			fileInput.value = '';
-	// 			return false;
-	// 		} else {
-	// 			//Image preview
-	// 			if (fileInput.files && fileInput.files[0]) {
-	// 				var reader = new FileReader();
-	// 				reader.onload = function(e) {
-	// 					document.getElementById('showGambarParkir').innerHTML = '<img src="' + e.target.result +
-	// 						'" width="120px"/>';
-	// 				};
-	// 				reader.readAsDataURL(fileInput.files[0]);
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	// function tampilfotomushola() {
-	// 	var fileInput = document.getElementById('mushola');
-	// 	var filePath = fileInput.value;
-	// 	var extensions = /(\.jpg|\.png)$/i;
-	// 	var ukuran = fileInput.files[0].size;
-	// 	if (ukuran > 10000000) {
-	// 		alert('ukuran terlalu besar. Maksimal 1000KB')
-	// 		fileInput.value = '';
-	// 		return false;
-	// 	} else {
-	// 		if (!extensions.exec(filePath)) {
-	// 			alert('Silakan unggah file yang memiliki ekstensi .jpg/.png.');
-	// 			fileInput.value = '';
-	// 			return false;
-	// 		} else {
-	// 			//Image preview
-	// 			if (fileInput.files && fileInput.files[0]) {
-	// 				var reader = new FileReader();
-	// 				reader.onload = function(e) {
-	// 					document.getElementById('showGambarMushola').innerHTML = '<img src="' + e.target.result +
-	// 						'" width="120px"/>';
-	// 				};
-	// 				reader.readAsDataURL(fileInput.files[0]);
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	// function tampilfotowc() {
-	// 	var fileInput = document.getElementById('wc');
-	// 	var filePath = fileInput.value;
-	// 	var extensions = /(\.jpg|\.png)$/i;
-	// 	var ukuran = fileInput.files[0].size;
-	// 	if (ukuran > 10000000) {
-	// 		alert('ukuran terlalu besar. Maksimal 1000KB')
-	// 		fileInput.value = '';
-	// 		return false;
-	// 	} else {
-	// 		if (!extensions.exec(filePath)) {
-	// 			alert('Silakan unggah file yang memiliki ekstensi .jpg/.png.');
-	// 			fileInput.value = '';
-	// 			return false;
-	// 		} else {
-	// 			//Image preview
-	// 			if (fileInput.files && fileInput.files[0]) {
-	// 				var reader = new FileReader();
-	// 				reader.onload = function(e) {
-	// 					document.getElementById('showGambarWc').innerHTML = '<img src="' + e.target.result +
-	// 						'" width="120px"/>';
-	// 				};
-	// 				reader.readAsDataURL(fileInput.files[0]);
-	// 			}
-	// 		}
-	// 	}
-	// }
 </script>
